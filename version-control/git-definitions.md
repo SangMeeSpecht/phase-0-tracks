@@ -25,7 +25,7 @@
   1. Change file: update file with any changes 
   2. Add/stage file: adding, but not saving, updated file(s) to an area to be 
      committed
-  3. Commit file: creates a save point in your development timeline with a message 
+  3. Commit file: create a save point in the development timeline with a message 
      describing the update made to the committed file
 
 
@@ -36,4 +36,4 @@
 
 * What is a merge conflict?  How do you resolve it?
 
-  A merge conflict is an event that happens when a version-control program is unable to merge two branches on its own.  These conflicts need to be resolved before two branches can properly merge.  How to resolve a merge conflict depends on the cause of the conflict.  When there is a merge conflict, a message will appear on the command line, telling the developer which file the merge conflict is in.  After opening the file, the developer will be shown where there is conflict between the two files.  Next, the changes will be made manually on one of the files in order to resolve any conflict.  Any changes then need to be stages and committed in order for the merge conflict to resolve.  
+  A merge conflict is an event that happens when a version-control program is unable to merge two branches on its own.  These conflicts need to be resolved before two branches can properly merge.  How to resolve a merge conflict depends on the cause of the conflict.  When there is a merge conflict, a message will appear on the command line, telling the developer which file the merge conflict is in.  After opening the file, the developer will be shown where there is conflict between the two files.  Next, the changes will be made manually on the filek in order to resolve any conflict.  Any changes then need to be staged and committed in order for the merge conflict to resolve.  
