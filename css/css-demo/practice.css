@@ -1,0 +1,20 @@
+#contact-info {
+	font-size: .8em;
+}
+
+.job {
+	background-color: #E9E5DC;
+	border-radius: 25px; 
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	margin-bottom: 4px;
+}
+
+.ul {
+	font-size: .8em;
+}
+
+section section {
+	color: white;
+}
