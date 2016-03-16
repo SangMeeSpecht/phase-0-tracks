@@ -32,7 +32,8 @@ figcaption {
 }
 
 body {
-  width: 960px;
+  max-width: 960px;
+  margin: auto;
 }
 
 /* {
@@ -40,15 +41,34 @@ body {
 } */
 
 #external-links {
-  width: 200px;
+  width: 20%;
   vertical-align: text-top;
   display: inline-block;
   float: left;
+  min-width: 200px;
+
 }
 
 .main {
-  width: 756px;
+  width: 75%;
   vertical-align: text-top;
   display: inline-block;
   float: right;
+  min-width: 350px;
+}
+@media screen and (max-width: 400px) {
+  #external-links {
+  width: 100%;
+  font-size: 125%;
+  display: inline-block;
+  float: none;
+  margin: auto;  }
+}
+
+@media screen and (max-width: 815px) {
+  .main {
+  width: 100%;
+  display: inline-block;
+  float: none;
+  margin: auto;  }
 }
