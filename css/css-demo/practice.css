@@ -19,3 +19,6 @@ section section {
 	color: green;
 }
 
+input:focus {
+    background-color: #9DDDF2;
+}
