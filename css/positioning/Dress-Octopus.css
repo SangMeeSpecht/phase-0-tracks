@@ -1,12 +1,13 @@
 .octopus {
-	margin-left: 600px;
+	display: block;
+	margin: auto;
 	margin-top: 100px;
 }
 
 .glasses {
 	position: absolute;
-	left: 650px;
-	top: 205px;
+	left: 660px;
+	top: 200px;
 }
 
 .hat {
