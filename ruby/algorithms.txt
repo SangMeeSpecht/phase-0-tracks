@@ -1,0 +1,73 @@
+***Pouring a Glass of Water***
+-Move body clockwise until facing cabinet with glasses
+-Move body left or right until in front of cabinet
+-Move body forward until body touching counter with cabinet counter
+-Extend arm up until level with cabinet handle:
+	-when arm level with handle:
+		-extend arm forward until touching handle
+		-grasp handle with hand
+		-pull handle towards body until cabinet is fully open
+-Extend arm up until level with glass shelf:
+	-when arm is level with shelf and glasses:
+		-extend arm forward until touching glass
+		-grasp glass with hand
+		-pull hand towards body until clear of the cabinet
+-Move body clockwise until facing counter
+	-when body is facing counter:
+		-move arm down until bottom of glass touches counter
+		-ungrasp hands from glass
+-Move body clockwise until facing fridge
+-Move body left or right until in front of fridge
+-Extend arm up until level with fridge handle:
+	-extend arm forward
+	-grasp handle with hand
+	-pull handle towards body until door is fully open
+	-extend opposite arm until perpendicular with fridge door
+		-push door towards itself until closed
+-Extend arm up until level with shelf with water pitcher:
+	-extend arm forward until touching pitcher handle
+	-grasp handle with hand
+	-pull pitcher towards body until clear of fridge
+-Move body clockwise until facing counter with glass
+-Move body left or right until in front glass
+-Move body forward until body touching counter with cabinet counter
+-Raise hand with pitcher up until top of pitcher is directly above glass:
+	-Move hand down at a 45 degree angle until glass is full
+	-Move hand back at a 45 degree angle and move arm back until it clears the glass
+	-Move hand down until bottom of water pitcher touches counter
+
+
+
+***Using an Elevator***
+
+*note: how elevator buttons look
+
+13  14  15
+10  11  12
+7   8   9
+4   5   6
+1   2   3
+
+-Move body clockwise until front of body faces elevator side with elevator buttons.
+-Move left or right to the side with the buttons.
+-Move robot arm up until it is perpendicular to the 8 button:
+-Ask, "What floor would you like to go to?"
+	-If a voice command is heard: 
+		-If number is >9 and <13, move arm up 1 row:
+			-If number is equal to 11, extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 9, move arm left extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 12, move arm right, extend arm forward and push button, then move arm down until it is parallel with floor
+		-Else, if number is >12 and <16, move are up 2 rows:
+			-If number is equal to 14, extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 13, move arm left extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 16, move arm right, extend arm forward and push button, then move arm down until it is parallel with floor
+		-Else, if number is <7 and >3, move arm down 1 row:
+			-If number is equal to 5, extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 4, move arm left extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 6, move arm right, extend arm forward and push button, then move arm down until it is parallel with floor
+		-Else, if number is <4 and >0, move arm down 2 rows:
+			-If number is equal to 2, extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 1, move arm left extend arm forward and push button, then move arm down until it is parallel with floor
+			-If number is equal to 3, move arm right, extend arm forward and push button, then move arm down until it is parallel with floor
+		-Else, say, "I'm sorry I do not understand.  What floor would you like to 		go to?" and start loop again.
+	-Else, keep arm in perpendicular position until voice command is heard
