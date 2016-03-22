@@ -1,3 +1,38 @@
-body {
-	background-color: pink;
+header h1 {
+  text-align: center;
+  color: purple;
+}
+
+header, footer {
+  background-color: pink;
+}
+
+a:hover {
+  color: green;
+}
+
+.column-1, .column-2{
+  width: 48%;
+  padding: 5px;
+  display: table-cell;
+
+}
+
+.column-1 {
+  background-color: red;
+/*   float: left;
+  font-family: Helvetica;
+  border: 1px solid black;
+  border-radius: 2em; */
+}
+
+.column-2 {
+  background-color: green;
+/*   float: right;
+  font-family: Courier; */
+}
+
+footer {
+  clear: both;
+  text-align: center;
 }
