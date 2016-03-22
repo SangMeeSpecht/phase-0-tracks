@@ -1,10 +1,11 @@
 puts "How many employees will be processed?"
 number_of_employees = gets.chomp.to_i
 
-number_of_employees_count = 0
+year = 2016
+employee_count = 0
 
-until number_of_employees_count >= number_of_employees
-    number_of_employees_count += 1
+until employee_count >= number_of_employees
+    employee_count += 1
 	
 	puts "What is your name?"
 	name = gets.chomp
@@ -15,10 +16,10 @@ until number_of_employees_count >= number_of_employees
 	puts "What year were you born?"
 	year_born = gets.chomp.to_i
 
-	puts "Our company cafeteria serves garlic bread.  Should we order some for you?"
+	puts "Our company cafeteria serves garlic bread.  Should we order some for you? ('yes' or 'no')"
 	garlic_bread = gets.chomp
 
-	puts "Would you like to enroll in the company's health insurance?"
+	puts "Would you like to enroll in the company's health insurance? ('yes' or 'no')"
 	insurance = gets.chomp
 
 	finished_list = false
@@ -32,14 +33,14 @@ until number_of_employees_count >= number_of_employees
 			finished_list = true
 		elsif allergies == "done"
 			finished_list = true
-			if (current_age == 2016 - year_born) && (garlic_bread == "yes")
-				puts "Probably not a vampire."
-			elsif (current_age != 2016 - year_born) && ((garlic_bread == "no") || (insurance == "no"))
-				puts "Probably a vampire."
-			elsif (current_age != 2016 - year_born) && (garlic_bread == "no") && (insurance == "no")		
-				puts "Almost certainly a vampire."
-			elsif name == "Drake Cula" || name == "Tu Fang"
+			if name == "Drake Cula" || name == "Tu Fang"
 				puts "Definitely a vampire."
+			elsif (current_age != year - year_born) && (garlic_bread == "no") && (insurance == "no")		
+				puts "Almost certainly a vampire."
+			elsif (current_age != year - year_born) && ((garlic_bread == "no") || (insurance == "no"))
+				puts "Probably a vampire."
+			elsif (current_age == year - year_born) && (garlic_bread == "yes")
+				puts "Probably not a vampire."
 			else 
 				puts "Results inconclusive."
 			end
