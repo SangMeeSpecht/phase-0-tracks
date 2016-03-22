@@ -3,7 +3,9 @@ number_of_employees = gets.chomp.to_i
 
 number_of_employees_count = 0
 
-until number_of_employees_count == number_of_employees
+until number_of_employees_count >= number_of_employees
+    number_of_employees_count += 1
+	
 	puts "What is your name?"
 	name = gets.chomp
 
@@ -30,22 +32,19 @@ until number_of_employees_count == number_of_employees
 			finished_list = true
 		elsif allergies == "done"
 			finished_list = true
+			if (current_age == 2016 - year_born) && (garlic_bread == "yes")
+				puts "Probably not a vampire."
+			elsif (current_age != 2016 - year_born) && ((garlic_bread == "no") || (insurance == "no"))
+				puts "Probably a vampire."
+			elsif (current_age != 2016 - year_born) && (garlic_bread == "no") && (insurance == "no")		
+				puts "Almost certainly a vampire."
+			elsif name == "Drake Cula" || name == "Tu Fang"
+				puts "Definitely a vampire."
+			else 
+				puts "Results inconclusive."
+			end
 		end
 	end
-
-	if (current_age == 2016 - year_born) && (garlic_bread == "yes")
-		puts "Probably not a vampire."
-	elsif (current_age != 2016 - year_born) && ((garlic_bread == "no") || (insurance == "no"))
-		puts "Probably a vampire."
-	elsif (current_age != 2016 - year_born) && (garlic_bread == "no") && (insurance == "no")		
-		puts "Almost certainly a vampire."
-	elsif name == "Drake Cula" || name == "Tu Fang"
-		puts "Definitely a vampire."
-	else 
-		puts "Results inconclusive."
-	end
-
-	number_of_employees_count += 1
 end
 
 puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
