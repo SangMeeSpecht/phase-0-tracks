@@ -31,24 +31,21 @@ msg_type = gets.chomp
 if msg_type == "decrypt"
   def decrypt(password)
   index= 0
-  alpha = "abcdefghijklmnopqrstuvwxyz"
+  alpha = "abcdefghijklmnopqrstuvwxyz !"
+  password=password.downcase
   while index < password.length
-    password[index] = password[index].downcase
-    if password[index] == "!"
-      print " "
+    if password[index] == "a"
+    	password[index] = "z"
     elsif password[index] == " "
-      print "!"
+        password[index] = "!"
     else
     alpha_index_number = alpha.index(password[index])
     index_minus_1 = alpha_index_number - 1
-      if index == 0
-        print alpha[index_minus_1].capitalize
-      else
-       print alpha[index_minus_1]
-      end
-    end
+    password[index] = alpha[index_minus_1]
+    	end
     index +=1
   end
+  return password
   end
   puts "What is your password you would like to decrypt?"
   pw = gets.chomp
