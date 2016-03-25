@@ -28,6 +28,21 @@ A decrypt method that reverses the process above.
 puts "Would you like to decrypt or encrypt a password?"
 msg_type = gets.chomp
 
+=begin 
+  def decrypt(password)
+    index= 0
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    password = password.downcase 
+  while index < password.length
+    alpha_index_number = alpha.index(password[index]) 
+    index_minus_1 = alpha_index_number - 1
+    password[index] = alpha[index_minus_1]
+    index += 1
+  end
+  return password
+  end
+=end
+
 if msg_type == "decrypt"
   def decrypt(password)
   index= 0
