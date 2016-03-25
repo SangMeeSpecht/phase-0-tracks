@@ -54,7 +54,7 @@ if msg_type == "decrypt"
 elsif msg_type == "encrypt"
   def encrypt(password)
   index= 0
-  until index == password.length
+  while index < password.length
     password[index] = password[index].next
     index +=1
   end
