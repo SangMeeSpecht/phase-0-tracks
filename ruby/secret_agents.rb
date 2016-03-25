@@ -33,15 +33,15 @@ if msg_type == "decrypt"
   index= 0
   alpha = "abcdefghijklmnopqrstuvwxyz"
   while index < password.length
-    password[index] = password[index].downcase
-    if password[index] == "!"
+    decrypt_password = password[index].downcase
+    if decrypt_password == "!"
       print " "
-    elsif password[index] == " "
+    elsif decrypt_password == " "
       print "!"
     else
-    alpha_index_number = alpha.index(password[index])
+    alpha_index_number = alpha.index(decrypt_password)
     index_minus_1 = alpha_index_number - 1
-      if index == 0
+      if index == 0 && (password =~ /[A-Z]/)
         print alpha[index_minus_1].capitalize
       else
        print alpha[index_minus_1]
