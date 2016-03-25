@@ -1,7 +1,6 @@
 puts "How many employees will be processed?"
 number_of_employees = gets.chomp.to_i
 
-year = 2016
 employee_count = 0
 
 until employee_count >= number_of_employees
@@ -35,11 +34,11 @@ until employee_count >= number_of_employees
 			finished_list = true
 			if name == "Drake Cula" || name == "Tu Fang"
 				puts "Definitely a vampire."
-			elsif (current_age != year - year_born) && (garlic_bread == "no") && (insurance == "no")		
+			elsif (current_age != Time.now.year - year_born) && (garlic_bread == "no") && (insurance == "no")		
 				puts "Almost certainly a vampire."
-			elsif (current_age != year - year_born) && ((garlic_bread == "no") || (insurance == "no"))
+			elsif (current_age != Time.now.year - year_born) && ((garlic_bread == "no") || (insurance == "no"))
 				puts "Probably a vampire."
-			elsif (current_age == year - year_born) && (garlic_bread == "yes")
+			elsif (current_age == Time.now.year - year_born) && (garlic_bread == "yes")
 				puts "Probably not a vampire."
 			else 
 				puts "Results inconclusive."
