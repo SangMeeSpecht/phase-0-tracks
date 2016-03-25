@@ -33,7 +33,7 @@ msg_type = gets.chomp
     index= 0
     alpha = "abcdefghijklmnopqrstuvwxyz"
     password = password.downcase 
-  while index < password.length
+  until index == password.length
     alpha_index_number = alpha.index(password[index]) 
     index_minus_1 = alpha_index_number - 1
     password[index] = alpha[index_minus_1]
@@ -42,6 +42,24 @@ msg_type = gets.chomp
   return password
   end
 =end
+=begin
+  def decrypt(password)
+  index= 0
+  alpha = "abcdefghijklmnopqrstuvwxyz !"
+  password=password.downcase
+  while index < password.length
+    if password[index] == "a"
+    	password[index] = "z"
+    else
+    alpha_index_number = alpha.index(password[index])
+    index_minus_1 = alpha_index_number - 1
+    password[index] = alpha[index_minus_1]
+    end
+    index +=1
+  end
+  return password
+  end 
+=end 
 
 if msg_type == "decrypt"
   def decrypt(password)
@@ -72,7 +90,7 @@ if msg_type == "decrypt"
 elsif msg_type == "encrypt"
   def encrypt(password)
   index= 0
-  while index < password.length
+  until index == password.length
     password[index] = password[index].next
     index +=1
   end
