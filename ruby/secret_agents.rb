@@ -28,21 +28,7 @@ A decrypt method that reverses the process above.
 puts "Would you like to decrypt or encrypt a password?"
 msg_type = gets.chomp
 
-=begin 
-  def decrypt(password)
-    index= 0
-    alpha = "abcdefghijklmnopqrstuvwxyz"
-    password = password.downcase 
-  until index == password.length
-    alpha_index_number = alpha.index(password[index]) 
-    index_minus_1 = alpha_index_number - 1
-    password[index] = alpha[index_minus_1]
-    index += 1
-  end
-  return password
-  end
-=end
-=begin
+if msg_type == "decrypt"
   def decrypt(password)
   index= 0
   alpha = "abcdefghijklmnopqrstuvwxyz !"
@@ -50,38 +36,16 @@ msg_type = gets.chomp
   while index < password.length
     if password[index] == "a"
     	password[index] = "z"
+    elsif password[index] == " "
+        password[index] = "!"
     else
     alpha_index_number = alpha.index(password[index])
     index_minus_1 = alpha_index_number - 1
     password[index] = alpha[index_minus_1]
-    end
+    	end
     index +=1
   end
   return password
-  end 
-=end 
-
-if msg_type == "decrypt"
-  def decrypt(password)
-  index= 0
-  alpha = "abcdefghijklmnopqrstuvwxyz"
-  while index < password.length
-    decrypt_password = password[index].downcase
-    if decrypt_password == "!"
-      print " "
-    elsif decrypt_password == " "
-      print "!"
-    else
-    alpha_index_number = alpha.index(decrypt_password)
-    index_minus_1 = alpha_index_number - 1
-      if index == 0 && (password =~ /[A-Z]/)
-        print alpha[index_minus_1].capitalize
-      else
-       print alpha[index_minus_1]
-      end
-    end
-    index +=1
-  end
   end
   puts "What is your password you would like to decrypt?"
   pw = gets.chomp
