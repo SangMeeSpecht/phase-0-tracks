@@ -30,22 +30,22 @@ msg_type = gets.chomp
 
 if msg_type == "decrypt"
   def decrypt(password)
-  index= 0
-  alpha = "abcdefghijklmnopqrstuvwxyz !"
-  password=password.downcase
-  while index < password.length
-    if password[index] == "a"
-    	password[index] = "z"
-    elsif password[index] == " "
+    index= 0
+    alpha = "abcdefghijklmnopqrstuvwxyz !"
+    password=password.downcase
+    while index < password.length
+      if password[index] == "a"
+    	  password[index] = "z"
+      elsif password[index] == " "
         password[index] = "!"
-    else
-    alpha_index_number = alpha.index(password[index])
-    index_minus_1 = alpha_index_number - 1
-    password[index] = alpha[index_minus_1]
-    	end
-    index +=1
-  end
-  return password
+      else
+       alpha_index_number = alpha.index(password[index])
+       index_minus_1 = alpha_index_number - 1
+       password[index] = alpha[index_minus_1]
+      end
+      index +=1
+    end
+    return password
   end
   puts "What is your password you would like to decrypt?"
   pw = gets.chomp
@@ -53,11 +53,11 @@ if msg_type == "decrypt"
   
 elsif msg_type == "encrypt"
   def encrypt(password)
-  index= 0
-  while index < password.length
-    password[index] = password[index].next
-    index +=1
-  end
+    index= 0
+    while index < password.length
+      password[index] = password[index].next
+      index +=1
+    end
     if password.include? "ab"
       return password.gsub!("ab", "a")
     else
