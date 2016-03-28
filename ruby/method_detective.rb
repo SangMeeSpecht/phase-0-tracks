@@ -54,8 +54,10 @@
 "The mystery of the missing first letter".sub!("T", "")
 "The mystery of the missing first letter".replace("he mystery of the missing first letter")
 # => "he mystery of the missing first letter"
-			  2   4    3       6
+
 # "Elementary,    my   dear        Watson!".<???>
+"Elementary,    my   dear        Watson!".squeeze(" ")
+"Elementary,    my   dear        Watson!".squeeze
 "Elementary  ,    my   dear      Watson!".replace("Elementary, my dear Watson!")
 # => "Elementary, my dear Watson!"
 
