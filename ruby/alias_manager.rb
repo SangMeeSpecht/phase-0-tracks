@@ -1,4 +1,4 @@
-#Ask for input and store in variable (make characters lower case)
+#Ask for input and store in variable (make characters lowercase)
 puts "Welcome to the TOP-SECRET Alias Management System"
 puts "Please enter the full name you would like to change."
 puts "Enter 'quit' when finished."
