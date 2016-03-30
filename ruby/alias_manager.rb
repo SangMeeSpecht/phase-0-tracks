@@ -1,26 +1,33 @@
-# Method to swap first and last name & switch letters in string
-#   + Split single string into 2 strings and store in array (so you can iterate)
-#   + Swap first and last name strings
-#   + Iterate through each string
-#     + Replace original characters with new characters
-#     + Capitalize first character of each string
-#   + Join strings in array into one string
+#Ask for input and store in variable (make characters lower case)
+puts "Welcome to the TOP-SECRET Alias Management System"
+puts "Please enter the full name you would like to change."
+puts "Enter 'quit' when finished."
+finished = false
 
-def alias_manager(name)
-  swap_name = name.split(" ")
-  swap_name.insert(0, swap_name.delete_at(1))
-  
-  swap_name.map! { |string|
-  string = string.tr("abcdefghijklmnopqrstuvwxyz ", "ecdfighjoklmnpuqrstvawxyzb ")
-  string.capitalize!
-  }
+until finished == true
+  old_name = gets.chomp.downcase
 
-  swap_name.join(" ")
-  
+  if old_name == "quit"
+    puts "Thank you for using the Alias Management System.  Goodbye!"
+    finished = true
+  else 
+    def alias_manager(name)      
+# Split original string into two strings
+      swap_name = name.split(" ")
+# Swap the first string with the second
+      swap_name.insert(0, swap_name.delete_at(1))
+
+# Iterate through two strings and swap letters
+# Capitalize first letter of each string
+      swap_name.map! { |string|
+      string = string.tr("abcdefghijklmnopqrstuvwxyz ", "ecdfighjoklmnpuqrstvawxyzb ")
+      string.capitalize!
+      }
+# Join two strings into one and print
+      puts swap_name.join(" ")
+    end
+
+    alias_manager(old_name)
+    puts "Please enter another name to be changed.  Enter 'quit' if finished."
+  end
 end
-
-# Ask for user input and store answer in variable with lower case letters
-# Call method
-puts "Please enter your full name."
-old_name = gets.chomp.downcase
-alias_manager(old_name)
