@@ -1,35 +1,19 @@
+#Ask for input
+#Store input in variable
+
 puts "Please enter your full name."
 name = gets.chomp
-word_swap = name.split(" ")
 
-word_swap.insert(0, word_swap.delete_at(1))
-word_swap = word_swap.join(" ")
+# Method: 
+#   +Split names into 2 elements and store in variable
+#   +Swap first array element with second
+#   +Change all letters to lowercase
+#   +Split all string characters into individual strings
+# Iteration:
+#   +Iterate through array and swap all letters with secret letters
+#   +Join strings back together 
+#   +Capitalize first letter on each string
 
-letter_swap = word_swap.split("")
+array = name.split(" ")
 
-
-letter_swap.map! { |letter|
-	if letter == "a" || letter == "e" || letter == "i" || letter == "o" || letter == "u"
-		vowel = "uoiea"		
-    	current_index = vowel.index(letter)
-  		vowel[current_index - 1]
-  	elsif letter == "A" || letter == "E" || letter == "I" || letter == "O" || letter == "U"
-		vowel = "UOIEA"		
-    	current_index = vowel.index(letter)
-  		vowel[current_index - 1]
-  	elsif letter == "d" || letter == "h" || letter == "n" || letter == "t"
-  		letter.next.next
- 	elsif letter == "D" || letter == "H" || letter == "N" || letter == "T"
-  		letter.next.next
-  	elsif letter == "z"
-  		letter = "b"
-  	elsif letter == "Z"
-  		letter = "B"
-  	elsif letter == " "
-  		letter = " "
-  	else
-  		letter.next
-	end
-}
-
-letter_swap.join("")
+name.tr("abcdefghijklmnopqrstuvwxyz ", "ecdfighjoklmnpuqrstvawxyzb ")
