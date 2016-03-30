@@ -1,19 +1,26 @@
-#Ask for input
-#Store input in variable
+# Method to swap first and last name & switch letters in string
+#   + Split single string into 2 strings and store in array (so you can iterate)
+#   + Swap first and last name strings
+#   + Iterate through each string
+#     + Replace original characters with new characters
+#     + Capitalize first character of each string
+#   + Join strings in array into one string
 
+def alias_manager(name)
+  swap_name = name.split(" ")
+  swap_name.insert(0, swap_name.delete_at(1))
+  
+  swap_name.map! { |string|
+  string = string.tr("abcdefghijklmnopqrstuvwxyz ", "ecdfighjoklmnpuqrstvawxyzb ")
+  string.capitalize!
+  }
+
+  swap_name.join(" ")
+  
+end
+
+# Ask for user input and store answer in variable with lower case letters
+# Call method
 puts "Please enter your full name."
-name = gets.chomp
-
-# Method: 
-#   +Split names into 2 elements and store in variable
-#   +Swap first array element with second
-#   +Change all letters to lowercase
-#   +Split all string characters into individual strings
-# Iteration:
-#   +Iterate through array and swap all letters with secret letters
-#   +Join strings back together 
-#   +Capitalize first letter on each string
-
-array = name.split(" ")
-
-name.tr("abcdefghijklmnopqrstuvwxyz ", "ecdfighjoklmnpuqrstvawxyzb ")
+old_name = gets.chomp.downcase
+alias_manager(old_name)
