@@ -1,8 +1,14 @@
 puts "Please enter your full name."
 name = gets.chomp
-split_name = name.split("")
+word_swap = name.split(" ")
 
-split_name.map! { |letter|
+word_swap.insert(0, word_swap.delete_at(1))
+word_swap = word_swap.join(" ")
+
+letter_swap = word_swap.split("")
+
+
+letter_swap.map! { |letter|
 	if letter == "a" || letter == "e" || letter == "i" || letter == "o" || letter == "u"
 		vowel = "uoiea"		
     	current_index = vowel.index(letter)
@@ -26,4 +32,4 @@ split_name.map! { |letter|
 	end
 }
 
-letter_switch = split_name.join("")
+letter_swap.join("")
