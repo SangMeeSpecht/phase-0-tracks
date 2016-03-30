@@ -21,7 +21,7 @@ until finished == true
 # Split original string into two strings
       down_name = name.downcase
       swap_name = down_name.split(" ")
-# Swap the first string with the second
+# Insert a copy of the second string in index position 0, then delete original string in index position 1
       swap_name.insert(0, swap_name.delete_at(1))
 
 # Iterate through two strings and swap letters in array permanently 
