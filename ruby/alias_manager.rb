@@ -8,8 +8,24 @@ initialize letter swap method that takes a letter as a parameter
     letter is reassigned to the next consonant
   ELSE it must be a consonant that is not before a vowel
     letter is assigned to next letter
-END of method
+end of method
+
+initialize name swap method that takes a string (user's full name) as a parameter
+  change each character in string to lowercase letters
+  split string into two individual strings at every blank space
+  swap first and second string
+end of method
+
+loop until user inputs "done"
+  get input from user
+end of loop
 =end
+
+def name_swap(name)
+  name.downcase!
+  name = name.split(" ")
+  name.insert(0, name.delete_at(1))
+end
 
 def letter_swap(letter)
   vowel_cipher = {
