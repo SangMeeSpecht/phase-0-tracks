@@ -86,7 +86,7 @@ until finished == true
   else
     swap_name = name_swap(old_name)
     swap_name = swap_name.split("")
-    swap_name.map! { |string| letter_swap(string)}
+    swap_name.map! { |string| letter_swap(string) }
     swap_name = swap_name.join("")
     new_name = swap_name.split.map(&:capitalize).join(" ")
     puts new_name
