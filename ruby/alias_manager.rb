@@ -3,6 +3,7 @@ initialize name swap method that takes a string (user's full name) as a paramete
   change each character in string to lowercase letters
   split string into two individual strings at every blank space
   swap first and second string
+  join strings together
 END of method
 
 initialize letter swap method that takes a letter as a parameter
@@ -43,8 +44,9 @@ END program
 
 def name_swap(name)
   name.downcase!
-  name = name.split(' ')
+  name = name.split(" ")
   name.insert(0, name.delete_at(1))
+  name.join(" ")
 end
 
 def letter_swap(letter)
@@ -58,6 +60,7 @@ def letter_swap(letter)
   if vowel_cipher.has_key?(letter)
     letter = vowel_cipher[letter]
   elsif letter == ' '
+    letter = ' '
   elsif letter == 'z'
     letter = 'b'
   elsif letter == 'd' || letter == 'h' || letter == 'n' || letter == 't' 
@@ -67,7 +70,29 @@ def letter_swap(letter)
   end
 end
 
+finished = false 
+id_list = {}
 
+until finished == true
+  old_name = gets.chomp
+  if old_name == "quit"
+    puts "Thank you for using the Alias Management System.  Goodbye!"
+    old_name = true 
+  else
+    swap_name = name_swap(old_name)
+    swap_name = swap_name.split("")
+    swap_name.map! { |string| letter_swap(string)}
+    swap_name = swap_name.join("")
+    new_name = swap_name.split.map(&:capitalize).join(" ")
+    puts new_name
+
+    id_list[old_name] = new_name 
+
+    puts "Please enter another name to be changed.  Enter 'quit' if finished."
+  end
+end
+
+id_list.each { |old_name, new_name| puts "The secret identity of '#{old_name}' is '#{new_name}'" }
 
 
 
