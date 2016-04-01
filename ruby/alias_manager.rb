@@ -5,7 +5,6 @@ initialize name swap method that takes a string (user's full name) as a paramete
   swap first and second string
   join strings together
 END of method
-
 initialize letter swap method that takes a letter as a parameter
   create cipher vowel hash
   IF it's TRUE that the cipher has a key that matches the argument
@@ -17,12 +16,9 @@ initialize letter swap method that takes a letter as a parameter
     letter is assigned to next letter
   END of conditional
 END of method
-
 prompt user for name input
-
 status of whether user is done with program is  FALSE
 empty array to store old and new names
-
 loop UNTIL user inputs "quit"
   get input from user
   IF input is equivalent to "quit"
@@ -39,7 +35,6 @@ loop UNTIL user inputs "quit"
     ask user to enter another name
   END of conditional
 END of loop
-
 print the old and new names hash
 END program
 =end
