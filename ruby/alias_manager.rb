@@ -18,6 +18,8 @@ initialize letter swap method that takes a letter as a parameter
   END of conditional
 END of method
 
+prompt user for name input
+
 status of whether user is done with program is  FALSE
 empty array to store old and new names
 
@@ -32,8 +34,8 @@ loop UNTIL user inputs "quit"
     iterate through array and call letter swap method on each element
     join array strings back together
     capitalize the first character in each string
-    add old and new name to a hash
     print new name 
+    add old and new name to a hash
     ask user to enter another name
   END of conditional
 END of loop
@@ -43,7 +45,7 @@ END program
 =end
 
 def name_swap(name)
-  name.downcase!
+  name.downcase
   name = name.split(" ")
   name.insert(0, name.delete_at(1))
   name.join(" ")
@@ -70,6 +72,10 @@ def letter_swap(letter)
   end
 end
 
+puts "Welcome to the Alias Management System"
+puts "Please enter the first and last name you would like to change."
+puts "Enter 'quit' when finished."
+
 finished = false 
 id_list = {}
 
@@ -77,7 +83,7 @@ until finished == true
   old_name = gets.chomp
   if old_name == "quit"
     puts "Thank you for using the Alias Management System.  Goodbye!"
-    old_name = true 
+    finished = true 
   else
     swap_name = name_swap(old_name)
     swap_name = swap_name.split("")
@@ -93,10 +99,3 @@ until finished == true
 end
 
 id_list.each { |old_name, new_name| puts "The secret identity of '#{old_name}' is '#{new_name}'" }
-
-
-
-
-
-
-
