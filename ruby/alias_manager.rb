@@ -2,8 +2,7 @@
 initialize name swap method that takes a string (user's full name) as a parameter
   change each character in string to lowercase letters
   split string into two individual strings at every blank space
-  swap first and second string
-  join strings together
+  swap first and second string and join strings together
 END of method
 
 initialize letter swap method that takes a letter as a parameter
@@ -28,8 +27,7 @@ loop UNTIL user inputs "quit"
     done with program is TRUE
     END program
   ELSE
-    call name swap method
-    split name swap return value into individual strings 
+    call name swap method and split name swap return value into individual strings 
     iterate through array and call letter swap method on each element
     join array strings back together
     capitalize the first character in each string
@@ -44,10 +42,9 @@ END program
 =end
 
 def name_swap(name)
-  name.downcase
-  name = name.split(" ")
-  name.insert(0, name.delete_at(1))
-  name.join(" ")
+  down_name = name.downcase
+  down_name = down_name.split(" ")
+  down_name.reverse.join(" ")
 end
 
 def letter_swap(letter)
@@ -84,12 +81,11 @@ until finished == true
     puts "Thank you for using the Alias Management System.  Goodbye!"
     finished = true 
   else
-    swap_name = name_swap(old_name)
-    swap_name = swap_name.split("")
+    swap_name = name_swap(old_name).split("")
     swap_name.map! { |string| letter_swap(string) }
     swap_name = swap_name.join("")
     new_name = swap_name.split.map(&:capitalize).join(" ")
-    puts new_name
+    puts "Your new name is '#{new_name}'"
 
     id_list[old_name] = new_name 
 
