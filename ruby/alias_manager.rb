@@ -43,8 +43,7 @@ END program
 
 def name_swap(name)
   down_name = name.downcase
-  down_name = down_name.split(" ")
-  down_name.reverse.join(" ")
+  swap_name = down_name.split(" ").reverse.join(" ")
 end
 
 def letter_swap(letter)
@@ -83,8 +82,7 @@ until finished == true
   else
     swap_name = name_swap(old_name).split("")
     swap_name.map! { |string| letter_swap(string) }
-    swap_name = swap_name.join("")
-    new_name = swap_name.split.map(&:capitalize).join(" ")
+    new_name = swap_name.join("").split.map(&:capitalize).join(" ")
     puts "Your new name is '#{new_name}'"
 
     id_list[old_name] = new_name 
