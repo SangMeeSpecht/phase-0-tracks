@@ -1,6 +1,6 @@
 class Santa
-	attr_accessor :gender, :ethnicity
-	attr_reader :age, :reindeer_ranking
+	attr_accessor :gender, :ethnicity, :age 
+	attr_reader :reindeer_ranking
 
 	def initialize(gender, ethnicity)
 		p "Initializing Santa instance..."
@@ -44,7 +44,33 @@ class Santa
 	end
 end
 
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+
+puts "Would you like to create a new Santa? (Y/N)"
+answer = ""
+santa_list = []
+
+until answer == "N"
+	answer = gets.chomp.upcase
+	if answer == "N"
+		break
+	elsif answer == "Y"
+		santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+		santa.age = rand(0..140)
+		puts "This Santa is a #{santa.ethnicity}, #{santa.gender}, and #{santa.age} year(s) old."
+		santa_list << "#{santa.ethnicity}, #{santa.gender}, #{santa.age}"
+	else
+		puts "Error.  Please try again."
+	end
+	puts "\nWould you like to create another Santa? (Y/N)"
+end
+
+puts
+puts santa_list
+
 =begin
+TESTS
 
 Release 2 & 3
 santa_1 = Santa.new("female", "yeti")
