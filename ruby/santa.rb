@@ -1,4 +1,7 @@
 class Santa
+	attr_accessor :gender, :ethnicity
+	attr_reader :age, :reindeer_ranking
+
 	def initialize(gender, ethnicity)
 		p "Initializing Santa instance..."
 		@gender = gender
@@ -16,13 +19,21 @@ class Santa
 		@reindeer_ranking.push(demoted_reindeer)
 	end
 
-	def gender
-		@gender 
-	end
-
-	def ethnicity
-		@ethnicity
-	end
+	#def gender
+	#	@gender
+	#end
+	#
+	#def ethnicity
+	#	@ethnicity
+	#end
+	#
+	#def gender =(new_gender)
+	#	@gender = new_gender
+	#end
+	#
+	#def ethnicity=(new_ethnicity)
+	#	@ethnicity = new_ethnicity
+	#end
 
 	def speak
 		p "Ho, ho, ho!  Haaaapy holidays!"
@@ -33,16 +44,17 @@ class Santa
 	end
 end
 
-
 =begin
-santa_1 = Santa.new("gender", "ethnicity")
-santa_1.get_mad_at("Rudolph")
 
+Release 2 & 3
+santa_1 = Santa.new("female", "yeti")
+p santa_1.ethnicity
+p santa_1.ethnicity = "loch ness monster"
 
-santa_1 = Santa.new("gende", "ethnicit")
-santa_1.get_mad_at("Dasher")
+santa_2 = Santa.new("female", "yeti")
+p santa_2.age
 
-
+Release 1
 santas = []
 example_genders = ["cis", "gender questioning", "intersex"]
 example_ethnicities = ["elf", "dwarf", "hobbit"]
@@ -50,6 +62,7 @@ example_genders.length.times do |i|
   santas << Santa.new(example_genders[i], example_ethnicities[i])
 end
 
+Release 0
 santa_1 = Santa.new
 santa_1.speak
 santa_1.eat_milk_and_cookies("sugar")
