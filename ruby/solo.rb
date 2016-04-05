@@ -1,7 +1,7 @@
 =begin 
 
 create class DBC_superhero
-	+ initialze method with 1 parameter (special_power, HP, energy_level)
+	+ initialze method with 3 parameters (special_power, HP, energy_level)
 		+ attribute 1: assign special_power to a variable
 		+ attribute 2: superhero HP (hit-points) set to 100 (default)
 		+ attribute 3: superhero energy set to 50 (default)
@@ -41,3 +41,21 @@ create class DBC_superhero
 END of class
 
 =end
+class DBC_Superhero
+	attr_reader :hp, :energy_level
+
+	def initialize(special_power, hp=100, energy_level=50)
+		@special_power = special_power
+		@hp = hp
+		@energy_level = energy_level
+	end
+end
+
+#TEST
+one = DBC_Superhero.new("super speed code writing")
+p one.hp
+p one.energy_level
+ 
+two = DBC_Superhero.new("super speed code writing", 1, 1)
+p two.hp
+p two.energy_level
