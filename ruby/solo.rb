@@ -15,11 +15,13 @@ create class DBC_superhero
 
 	+ basic power 2 method 
 		+ prints description of power
+		+subtract damage
 		+ prints how much damage was done (number of damage is set by random number within a range)
 	+ END of method 
 
 	+ special power method
 		+ prints description of power
+		+ subtract damage
 		+ prints how much damage was done (number of damage is set by random number within a range)
 	+ END of method
 
@@ -46,12 +48,56 @@ class DBC_Superhero
 
 	def initialize(special_power, hp=100, energy_level=50)
 		@special_power = special_power
+		@special_power_count = 3
 		@hp = hp
 		@energy_level = energy_level
+		@work_hp = 100
+	end
+
+	def special_power
+		if special_power_count > 0
+			puts "You used #{@special_power}"
+			work_damage = rand(50..60)
+			@work_hp -= work_damage
+			puts "#{work_damage} damage was done to your work!"
+			puts "You have #{special_power_count} special power uses left."
+		else
+			puts "You have no more special power uses left."
+		end
+	end
+
+	def ruby_smash
+		puts "You just crushed through that Ruby Challenge!"
+		work_damage = rand(20..40)
+		@work_hp -= work_damage
+		puts "#{work_damage} damage was done to your work!"
+	end
+
+	def wakeup_slap
+		puts "You just slapped yourself and stayed awake all night to code!"
+		work_damage = rand(10..20)
+		@work_hp -= work_damage
+		puts "#{work_damage} damage was done to your work!"
+
+		puts "However, you hurt yourself in the process!"
+		self_damage = rand(1..10)
+		@hp -= self_damage
+		puts "#{self_damage} damage was done to yourself!"
+	end
+
+	def work_hp
+		puts "Your work has #{@work_hp} health left."
 	end
 end
 
-#TEST
+one = DBC_Superhero.new("super speed code writing")
+p one.hp 
+p one.work_hp
+
+=begin 
+TEST RELEASE 1
+
+
 one = DBC_Superhero.new("super speed code writing")
 p one.hp
 p one.energy_level
@@ -59,3 +105,6 @@ p one.energy_level
 two = DBC_Superhero.new("super speed code writing", 1, 1)
 p two.hp
 p two.energy_level
+
+=end 
+
