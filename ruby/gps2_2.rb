@@ -72,7 +72,7 @@ p update_item(new_list, "ice_cream", 4)
 
 def print_list(list)
   puts "You need to buy:"
-  list.each { |item, quantity| puts "#{item} #{quantity}" }
+  list.each { |item, quantity| puts "#{quantity} #{item}" }
 end
 
 p print_list(new_list)
