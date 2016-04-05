@@ -44,7 +44,6 @@ END of class
 
 =end
 class DBC_Superhero
-	attr_reader :hp, :energy_level
 
 	def initialize(special_power, hp=100, energy_level=50)
 		@special_power = special_power
@@ -55,26 +54,24 @@ class DBC_Superhero
 	end
 
 	def special_power
-		if special_power_count > 0
 			puts "You used #{@special_power}"
 			work_damage = rand(50..60)
 			@work_hp -= work_damage
 			puts "#{work_damage} damage was done to your work!"
-			puts "You have #{special_power_count} special power uses left."
-		else
-			puts "You have no more special power uses left."
-		end
+			puts "You have #{@special_power_count -= 1} special power uses left."
 	end
 
 	def ruby_smash
 		puts "You just crushed through that Ruby Challenge!"
+		@energy_level -= 10
 		work_damage = rand(20..40)
 		@work_hp -= work_damage
 		puts "#{work_damage} damage was done to your work!"
 	end
 
 	def wakeup_slap
-		puts "You just slapped yourself and stayed awake all night to code!"
+		puts "You just slapped yourself so you could stay awake all night to code!"
+		@energy_level -= 5
 		work_damage = rand(10..20)
 		@work_hp -= work_damage
 		puts "#{work_damage} damage was done to your work!"
@@ -82,21 +79,21 @@ class DBC_Superhero
 		puts "However, you hurt yourself in the process!"
 		self_damage = rand(1..10)
 		@hp -= self_damage
-		puts "#{self_damage} damage was done to yourself!"
+		puts "#{self_damage} damage was done to your face!"
 	end
 
-	def work_hp
-		puts "Your work has #{@work_hp} health left."
-	end
+	#Put these at the bottom, bc if they are at the top, the attributes won't update when methods are called
+	attr_reader :hp, :energy_level, :work_hp
+	attr_accessor :special_power
 end
-
-one = DBC_Superhero.new("super speed code writing")
-p one.hp 
-p one.work_hp
 
 =begin 
 TEST RELEASE 1
 
+one = DBC_Superhero.new("super speed code writing")
+one.wakeup_slap
+one.work_hp
+p one.hp
 
 one = DBC_Superhero.new("super speed code writing")
 p one.hp
