@@ -78,6 +78,25 @@ end
 p print_list(new_list)
 
 =begin 
+Release 5
 
+* What did you learn about pseudocode from working on this challenge?
+  * I learned to incorporate what kind of output you should be expecting from each method.
+* What are the tradeoffs of using arrays and hashes for this challenge?
+  * Arrays are nice because you can use methods like the shovel (<<), which make it easier to add elements.
+    However, for this challenge, we need to pair two objects together, so an array won't organize the items as 
+    neatly as hash would.  The tradeoff with a hash is that it's not as easy to add elements to it, since
+    you have 2 objects that you have to keep in mind.   
+* What does a method return?
+  * A method returns the last expression in the method or whatever is explicitly asked to be returned 
+    ('return' will be in front of expression to be returned).
+* What kind of things can you pass into methods as arguments?
+  * integers, strings, floats, method return values (as variables), boolean values 
+* How can you pass information between methods?
+  * as variables, which are assigned the value of the method name 
+* What concepts were solidified in this challenge, and what concepts are still confusing?
+  * How to pass information between methods and the importance of return values was solidifed during this 
+    challenge.  The process of pseudocoding isn't confusing to me but is something that I want to keep 
+    improving.  
 
 =end
