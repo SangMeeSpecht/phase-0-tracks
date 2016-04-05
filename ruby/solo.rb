@@ -63,9 +63,44 @@ create class DBC_superhero
 	+ attribute readers/writers
 END of class
 
+UI 
++ prints a message welcoming user to "DBC Superhero Creator" 
++ asks user if they would like to create a superhero 
+
++ input is empty 
++ empty array to store input
+
++ prompt user for input UNTIL they enter "done"
+	+ get input 
+	+ IF input is 'yes'
+		+ what they would like their superhero name to be
+			+ store answer in variable
+		+ what they would like their special power to be 
+			+ store answer in variable
+		+ what they would like their healthpoint level to be, within a certain range
+			+ store answer in variable and change to integer
+		+ what they would like their energy point level to be, within a certain range
+			+ store answer in variable and change to integer
+		+ store all input in array
+		+ ask user if they would like to create another superhero or "done"
+	+ ELSIF input is 'done'
+		+ thank user for using program
+		+ BREAK
+	+ ELSE
+		+ print error
+		+ ask for user input
+	+ END of conditional
++ END of loop 
+
++ LOOP through array
+	+ print each attribute 
++ END of LOOP
+
 =end
+
 class DBC_Superhero
-	def initialize(special_power, hp=100, energy_level=50)
+	def initialize(name, special_power, hp=100, energy_level=50)
+		@name = name
 		@special_power = special_power
 		@hp = hp
 		@energy_level = energy_level
@@ -111,11 +146,52 @@ class DBC_Superhero
 
 	#Put these at the bottom, bc if they are at the top, the attributes won't update when methods are called
 	attr_reader :hp, :energy_level, :work_hp
-	attr_accessor :special_power
+	attr_accessor :special_power, :name
 end
 
+# USER INTERFACE
+puts "Welcome to the Dev Bootcamp Superhero Creator"
+puts "Would you like to create a DBC Superhero? Enter 'yes' or 'done'"
+
+input = ""
+superhero_list = []
+
+until input == "done"
+	input = gets.chomp
+
+	if input == "yes"
+		puts "What is your superhero name?"
+		name = gets.chomp
+	
+		puts "What would you like your special super power to be?"
+		power = gets.chomp
+	
+		puts "How many health points would you like to have? (1-500)"
+		health = gets.chomp.to_i
+	
+		puts "How many energy points would you like to have? (1-250)"
+		energy = gets.chomp.to_i
+
+		superhero_list << "Name: #{name}\nPower: #{power}\nHP: #{health}\nEnergy: #{energy}\n"
+	
+		puts "Would you like to create another superhero? Enter 'yes' or 'done'"
+	elsif input == "done"
+		puts "\nThank you for using the Dev Bootcamp Superhero Creator"
+		break
+	else
+		puts "Error: request denied"
+		puts "Would you like to create another superhero? Enter 'yes' or 'done'"
+	end
+end 
+
+puts "\nThe following superheros were created:\n"
+superhero_list.each do |attribute| 
+	puts attribute 
+	puts 
+end
 
 =begin 
+
 TEST RELEASE 1
 one = DBC_Superhero.new("super speed code writing")
 one.special_attack
@@ -136,4 +212,3 @@ p two.hp
 p two.energy_level
 
 =end 
-
