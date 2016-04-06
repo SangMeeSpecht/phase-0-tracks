@@ -1,6 +1,9 @@
 =begin 
 
 create class DBC_superhero
+	+ attribute readers
+	+ attribute readers/writers
+	
 	+ initialze method with 3 parameters (special_power, HP, energy_level)
 		+ attribute 1: assign special_power to a variable
 		+ attribute 2: superhero HP (hit-points) set to 100 (default)
@@ -53,9 +56,6 @@ create class DBC_superhero
 			+ prints how many points added and new energy level
 			+ prints updated energy level
 	+ END of method
-
-	+ attribute readers
-	+ attribute readers/writers
 END of class
 
 UI 
@@ -94,6 +94,9 @@ UI
 =end
 
 class DBC_Superhero
+	attr_reader :hp, :energy_level, :work_hp
+	attr_accessor :special_power, :name
+
 	def initialize(name, special_power, hp=100, energy_level=50)
 		@name = name
 		@special_power = special_power
@@ -150,10 +153,6 @@ class DBC_Superhero
 			puts "You now have an energy level of #{@energy_level}."
 		end
 	end
-
-	#Put these at the bottom, bc if they are at the top, the attributes won't update when methods are called
-	attr_reader :hp, :energy_level, :work_hp
-	attr_accessor :special_power, :name
 end
 
 # USER INTERFACE
