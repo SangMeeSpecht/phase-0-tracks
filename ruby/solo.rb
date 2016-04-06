@@ -43,20 +43,15 @@ create class DBC_superhero
 		+ prints how much damage was done to superhero hp
 	+ END of method 
 
-    METHOD NOT INCLUDED IN THIS FILE; WILL USE ON FUTURE DRAFTS
 	+ healing method that takes an argument of 2 different types of potions (heal HP or energy)
-		+ UNTIL user inputs correct arguments
-			+ get user input 
-			+ IF user chooses HP
-				+ add 20 points to HP
-				+ prints how many points added and new HP 
-			+ ELSIF user choose strength
-				+ add 20 points to energy level
-				+ prints how many points added and new energy level
-			+ ELSE
-				+ print error
-				+ ask user again what they would like to choose 
-		+ END of loop
+		+ IF user chooses HP
+			+ add 20 points to HP
+			+ prints how many points added and new HP 
+			+ prints updated HP
+		+ ELSIF user choose strength
+			+ add 20 points to energy level
+			+ prints how many points added and new energy level
+			+ prints updated energy level
 	+ END of method
 
 	+ attribute readers
@@ -144,6 +139,18 @@ class DBC_Superhero
 		puts "#{hp_damage} damage was done to you!"
 	end
 
+	def heal(potion_type)
+		if potion_type == "HP potion"
+			@hp += 20
+			puts "You healed 20 HP points."
+			puts "You now have #{@hp} HP."
+		elsif potion_type == "energy potion"
+			@energy_level += 20
+			puts "You healed 20 energy points."
+			puts "You now have an energy level of #{@energy_level}."
+		end
+	end
+
 	#Put these at the bottom, bc if they are at the top, the attributes won't update when methods are called
 	attr_reader :hp, :energy_level, :work_hp
 	attr_accessor :special_power, :name
@@ -193,9 +200,14 @@ end
 =begin 
 
 TEST RELEASE 1
-one = DBC_Superhero.new("super speed code writing")
+one = DBC_Superhero.new("Bob", "super speed code writing")
 one.special_attack
-one.work_hp
+p one.work_hp
+one.hw_attack
+p one.hp
+p one.energy_level
+one.heal("HP potion")
+p one.hp
 
 one = DBC_Superhero.new("super speed code writing")
 one.hw_attack
