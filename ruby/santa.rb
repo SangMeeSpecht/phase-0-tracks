@@ -72,13 +72,20 @@ puts santa_list
 =begin
 TESTS
 
-Release 2 & 3
+Release 3
 santa_1 = Santa.new("female", "yeti")
 p santa_1.ethnicity
 p santa_1.ethnicity = "loch ness monster"
 
 santa_2 = Santa.new("female", "yeti")
 p santa_2.age
+
+Release 2
+santa_1 = Santa.new("female", "yeti")
+santa_1.gender
+santa_1.ethnicity
+santa_1.celebrate_birthday
+santa_1.get_mad_at
 
 Release 1
 santas = []
