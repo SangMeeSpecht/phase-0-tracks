@@ -21,6 +21,7 @@ END of method
 
 encrypt method that advances every letter of a string forward one letter
 	counter to count number of times looped through each index number
+	empty string to store changed letters
 	UNTIL counter is equal to password length
 		IF letter is a space
 			letter is equal to a space
@@ -51,3 +52,36 @@ decrypt method that takes ever letter of a string one letter backward
 END of method
 
 =end
+
+def next_letter(letter)
+	if letter == "z"
+		letter = "a"
+	else
+		letter.next
+	end
+end
+
+def encrypt(password)
+	index = 0
+	encrypted = ""
+	
+	until index == password.length
+		letter = password[index]
+		if letter == " "
+			encrypted << " "
+		elsif letter == letter.upcase
+			encrypted << next_letter(letter.downcase).upcase
+		else 
+			encrypted << next_letter(letter)
+		end
+	index += 1
+	end
+	
+	p encrypted
+end
+
+def decrypt(password)
+	index_counter = 0
+end
+
+
