@@ -31,8 +31,9 @@ encrypt method that advances every letter of a string forward one letter
 			capitalize letter
 		ELSE 
 			go to next letter
-		END of conditional
-		add 1 to counter
+		add 1 to counter	
+	END of conditional
+	print encrypted message
 END of method
 
 decrypt method that takes ever letter of a string one letter backward
@@ -49,6 +50,7 @@ decrypt method that takes ever letter of a string one letter backward
 		END of conditional
 		add 1 to counter
 	END of loop
+	print decrypted message
 END of method
 
 =end
@@ -91,7 +93,22 @@ def encrypt(password)
 end
 
 def decrypt(password)
-	index_counter = 0
+	index = 0
+	decrypted = ""
+	
+	until index == password.length
+		letter = password[index]
+		if letter == " "
+			decrypted << " "
+		elsif letter == letter.upcase
+			decrypted << previous_letter(letter.downcase).upcase
+		else 
+			decrypted << previous_letter(letter)
+		end
+	index += 1
+	end
+
+	p decrypted 
 end
 
 
