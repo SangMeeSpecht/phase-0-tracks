@@ -1,4 +1,5 @@
 =begin 
+REFACTORED SINCE TURNING IN ASSIGNMENT
 
 next letter method that takes a letter argument
 	IF letter is 'z'
@@ -53,6 +54,22 @@ decrypt method that takes ever letter of a string one letter backward
 	print decrypted message
 END of method
 
+UI
+Ask user if they would like to decrypt or encrypt a password
+	store answer in variable
+	IF answer if encrypt
+		print "Please enter the password you would like to encrypt."
+		store answer in varible
+	  	run encrypt method
+	ELSIF answer is decrypt 
+	  print "Please enter the password you would like to decrypt."
+	  store answer in varible
+	  run decrypt method
+	ELSE 
+	  print error message
+	END of conditional
+	print result to screen
+
 =end
 
 def next_letter(letter)
@@ -88,7 +105,7 @@ def encrypt(password)
 		end
 	index += 1
 	end
-	
+
 	p encrypted
 end
 
@@ -107,8 +124,39 @@ def decrypt(password)
 		end
 	index += 1
 	end
-
-	p decrypted 
+	p decrypted
 end
 
+puts "Welcome secret agent.  Would you like to encrypt or decrypt a message?"
+msg_type = gets.chomp
+
+if msg_type == "encrypt"
+	puts "Please enter the message you would like to encrypt."
+	message = gets.chomp
+	encrypt(message)
+elsif msg_type == "decrypt"
+	puts "Please enter the message you would like to decrypt."
+	message = gets.chomp
+	decrypt(message)
+else
+	puts "Are you a spy?!  Program will self destruct in..."
+	puts "3..."
+	puts "2..."
+	puts "1..."
+	puts "BOOM!"
+end
+
+=begin 
+
+RELEASE 4
+decrypt(encrypt("swordfish"))
+decrypt(encrypt("The duck flies at midnight"))
+
+RELEASE 3
+encrypt("abc")
+encrypt("zed")
+decrypt("bcd")
+decrypt("afe")
+
+=end 
 
