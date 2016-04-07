@@ -61,6 +61,16 @@ def next_letter(letter)
 	end
 end
 
+def previous_letter(letter)
+	alpha = "abcdefghijklmnopqrstuvwxyz"
+	if letter == "a"
+		letter = "z"
+	else
+		alpha_index = alpha.index(letter) 
+		letter = alpha[alpha_index - 1]
+	end
+end
+
 def encrypt(password)
 	index = 0
 	encrypted = ""
