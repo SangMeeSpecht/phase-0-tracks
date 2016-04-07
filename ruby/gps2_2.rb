@@ -44,7 +44,7 @@ p original_list("lemonade tomatoes onions")
 
 new_list = original_list("lemonade tomatoes onions")
 
-def add_item(list, new_item, quantity)
+def add_item(list, new_item, quantity=1)
   list[new_item] = quantity
   list
 end
