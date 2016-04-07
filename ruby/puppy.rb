@@ -18,3 +18,10 @@ Tail-Whip
 Short-Reach
 
 =end
+
+class Canis_goldenis_rextriveus
+end
+
+puppy_1 = Canis_goldenis_rextriveus.new
+puppy_2 = Canis_goldenis_rextriveus.new
+puuppy_3 = Canis_goldenis_rextriveus.new
