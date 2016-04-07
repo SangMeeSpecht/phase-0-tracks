@@ -93,7 +93,6 @@ end
 def encrypt(password)
 	index = 0
 	encrypted = ""
-	
 	until index == password.length
 		letter = password[index]
 		if letter == " "
@@ -105,14 +104,12 @@ def encrypt(password)
 		end
 	index += 1
 	end
-
-	p encrypted
+	encrypted
 end
 
 def decrypt(password)
 	index = 0
 	decrypted = ""
-	
 	until index == password.length
 		letter = password[index]
 		if letter == " "
@@ -124,7 +121,7 @@ def decrypt(password)
 		end
 	index += 1
 	end
-	p decrypted
+	decrypted
 end
 
 puts "Welcome secret agent.  Would you like to encrypt or decrypt a message?"
@@ -133,11 +130,11 @@ msg_type = gets.chomp
 if msg_type == "encrypt"
 	puts "Please enter the message you would like to encrypt."
 	message = gets.chomp
-	encrypt(message)
+	p encrypt(message)
 elsif msg_type == "decrypt"
 	puts "Please enter the message you would like to decrypt."
 	message = gets.chomp
-	decrypt(message)
+	p decrypt(message)
 else
 	puts "Are you a spy?!  Program will self destruct in..."
 	puts "3..."
