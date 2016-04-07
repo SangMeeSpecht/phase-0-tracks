@@ -9,8 +9,8 @@ module Shout
 	end
 end
 
-Shout.yell_angrily("AAAAAAAARG!")
-Shout.yell_happily("YIPEEEEEEE!")
+Shout.yell_angrily("AAAAAAAARG")
+Shout.yell_happily("YIPEEEEEEE")
 =end
 
 module Shout
@@ -33,6 +33,8 @@ end
 
 shouter_1 = Isley_Brothers.new
 shouter_1.yell_happily("You know you make me wanna SHOUT")
+shouter_1.yell_angrily("Kick my heels up and SHOUT")
 
 shouter_2 = Tom_Hanks.new
 shouter_2.yell_angrily("Willllllson")
+shouter_2.yell_happily("Wilson, I'm sorry")
