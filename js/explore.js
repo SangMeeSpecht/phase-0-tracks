@@ -19,11 +19,11 @@ palindrome!), and stores the result of the function in a variable.
 
 declare a function that takes a string as an argument
 	loop through each character in the string
-		* beginning with the last character in the string, store each character in a data structure
+		* store empty string in variable 
+		* beginning with the last character in the string, store each character in empty string
 		* continue looping until the length of the reversed string is equal to the length of the original string
-		* join all of the strings in the data structure together
-		* RETURN the reversed string
 	END of loop
+		* RETURN the reversed string
 END of function
 
 DRIVER CODE
@@ -33,4 +33,3 @@ IF some condition is true
 	print the variable
 END of conditional
 */
-
