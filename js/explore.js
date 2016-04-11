@@ -39,7 +39,8 @@ var reverse = function(string) {
 		var reverseString = "";
 		reverseString += string.substring(index);
 	}
-		return reverseArray
+		return reverseString;
 };
 
-reverse("hello");
+var reversed = reverse("hello");
+console.log(reversed);
