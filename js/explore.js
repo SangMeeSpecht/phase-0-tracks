@@ -33,3 +33,13 @@ IF some condition is true
 	print the variable
 END of conditional
 */
+
+var reverse = function(string) {
+	for(index = string.length - 1; index >= 0; index --) {
+		var reverseString = "";
+		reverseString += string.substring(index);
+	}
+		return reverseArray
+};
+
+reverse("hello");
