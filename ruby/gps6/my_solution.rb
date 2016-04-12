@@ -1,7 +1,7 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: Anca ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [with: Anca Ciascaiu].
+# We spent [1.25] hours on this challenge.
 
 # EXPLANATION OF require_relative
 # Use this term to access files in the same directory as the file you're currently accessing
@@ -28,20 +28,21 @@ class VirusPredictor
   # Calculates the number of deaths in a particular state, according to population density
   def predicted_deaths
     # predicted deaths is solely based on population density
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
+    pd = @population_density
+    if pd >= 200
+      float = 0.4
+    elsif pd >= 150
+      float = 0.3
+    elsif pd >= 100
+      float = 0.2
+    elsif pd >= 50
+      float = 0.1
     else
-      number_of_deaths = (@population * 0.05).floor
+      float = 0.05
     end
-
+    number_of_deaths = (@population * float).floor
+  
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
   end
 
   # Calculates speed of spread in a particular state based on population density
@@ -61,7 +62,7 @@ class VirusPredictor
     else
       speed += 2.5
     end
-
+    
     puts " and will spread across the state in #{speed} months.\n\n"
 
   end
@@ -86,6 +87,10 @@ california.virus_effects
 alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
 alaska.virus_effects
 
+STATE_DATA.each do |state, population|
+  instance = VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population])
+  instance.virus_effects
+end 
 
 #=======================================================================
 # Reflection Section
