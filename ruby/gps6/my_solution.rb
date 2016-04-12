@@ -50,19 +50,22 @@ class VirusPredictor
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
+    pd = @population_density
+    speed_rate = speed
 
-    if @population_density >= 200
-      speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
+    if pd >= 200
+      speed_rate = 0.5
+    elsif pd >= 150
+      speed_rate = 1
+    elsif pd >= 100
+      speed_rate = 1.5
+    elsif pd >= 50
+      speed_rate = 2
     else
-      speed += 2.5
+      speed_rate = 2.5
     end
-    
+
+    speed += speed_rate
     puts " and will spread across the state in #{speed} months.\n\n"
 
   end
