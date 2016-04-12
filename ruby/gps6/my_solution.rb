@@ -4,7 +4,7 @@
 # We spent [1.25] hours on this challenge.
 
 # EXPLANATION OF require_relative
-# Use this term to access files in the same directory as the file you're currently accessing
+# Accesses files in the same directory as the file you're currently accessing
 #
 require_relative 'state_data'
 
@@ -73,10 +73,8 @@ class VirusPredictor
 end
 
 #=======================================================================
-
 # DRIVER CODE
  # initialize VirusPredictor for each state
-
 
 alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
 alabama.virus_effects
@@ -97,3 +95,32 @@ end
 
 #=======================================================================
 # Reflection Section
+=begin
+*What are the differences between the two different hash syntaxes shown in the state_data file?
+One hash uses the rocket hash symbol to assign the value and the other hash uses the symbol method
+to assign the value ( => vs. : ).
+
+
+*What does require_relative do? How is it different from require?
+'require_relative' includes a file into the current file, but only if it's in the same directory as
+the current file.  'require' does the same, but for files that aren't in the same directory as the 
+current file.  To include that file, you would have to write the relative path after 'require,' which 
+you don't have to do for 'require relative'.
+
+
+*What are some ways to iterate through a hash?
+The "each" method is the most common way to iterate through a hash.  The "collect" method also works.  
+
+
+*When refactoring virus_effects, what stood out to you about the variables, if anything?
+The variables are instance variables.  With the help of our guide, we discovered that it's
+redundant to include those as arguments and parameteres because the private instance methods have 
+access to those instance variables via the initialize method.
+
+
+*What concept did you most solidify in this challenge?
+Two concepts are the power of instance variables and scope.  Another important lesson learned is
+to always try to see how you can refactor.  These methods look like they don't need refactoring, 
+but there was room for improvement for each one.   
+
+=end
