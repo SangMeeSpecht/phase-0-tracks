@@ -1,3 +1,4 @@
+// ---------------------release 1 --------------------
 var color = ["green", "blue", "yellow", "orange"];
 var name = ["Ed", "George", "Peggy", "Tim"];
 console.log(name[0]);
@@ -9,7 +10,7 @@ console.log(name);
 // create empty horse object
 var horse = {};
 
-// llop through arrays to fill horse object
+// loop through arrays to fill horse object
 for (var index = 0; index < color.length; index++) {
   console.log(horse);
   horse[name[index]] = color[index];
