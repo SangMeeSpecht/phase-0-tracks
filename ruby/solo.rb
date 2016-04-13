@@ -221,5 +221,6 @@ p one.energy_level
 two = DBC_Superhero.new("super speed code writing", 1, 1)
 p two.hp
 p two.energy_level
+two.heal(HP potion)
 
 =end 
