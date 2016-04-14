@@ -13,3 +13,18 @@ declare method that returns the longest string in the array
 END of method
 
 */
+
+// RELEASE 0
+function longest() {
+	for (var index = 1; array.length > 1; index += 0) {
+		if (array[0].length > array[index].length) {
+			array.splice(1, 1);
+		} else {
+			array.splice(0, 1);
+		}
+	}
+	return array[0];
+}
+
+// DRIVER CODE
+longest();
