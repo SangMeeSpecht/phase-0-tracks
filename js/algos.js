@@ -13,7 +13,6 @@ declare function that returns the longest string in the array
 END of function
 */
 
-// DRIVER CODE
 // var array = ["aa", "aaaa", "aaa", "a"];
 // var array = ["bbbb", "bbb", "bb", "b"];
 // var array = ["c c", "c", "cccc", " cc c "];
@@ -33,8 +32,8 @@ function longest() {
 
 // DRIVER CODE
 console.log(longest());
-/*
 
+/*
 ============RELEASE 1==============
 declare two objects with several key-value pairs
 
@@ -54,12 +53,35 @@ declare function that checks to see if the 2 objects share any key-value pairs
 		* RETURN true
 	* END of conditional
 END of function
-
-
-
-
 */
 
+// var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
+// var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+
+// var one = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
+// var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+
+function match() {
+	var matches = 0;
+	var noMatches = 0
+	
+	for (var key in one) {
+	  if (one[key] === two[key]) {
+	   	matches += 1;
+	  } else {
+	  	noMatches += 1;
+	  }
+	}
+	
+	if(matches === 0) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+// DRIVER CODE
+console.log(match());
 
 /*
 ============RELEASE 2==============
