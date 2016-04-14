@@ -1,8 +1,8 @@
 /*
-
+============RELEASE 0==============
 declare array, which contains strings of various lengths
 	
-declare method that returns the longest string in the array
+declare function that returns the longest string in the array
 	* loop through each element in the array while the length of the array is greater than 1
 		* IF the length of the first element is greater than the 2nd
 			* delete the 2nd element
@@ -10,11 +10,8 @@ declare method that returns the longest string in the array
 			* delete the 1st element
 	* END of loop
 	* RETURN the 1st element of the array
-END of method
-
+END of function
 */
-
-//============RELEASE 0==============
 
 // DRIVER CODE
 // var array = ["aa", "aaaa", "aaa", "a"];
@@ -31,11 +28,31 @@ function longest() {
 			array.splice(0, 1);
 		}
 	}
-	return array[0];
+	return "'" + array[0] + "'";
 }
 
 // DRIVER CODE
 console.log(longest());
+/*
+============RELEASE 1==============
+declare two objects with several key-value pairs
 
-//============RELEASE 1==============
-//============RELEASE 2==============
+declare function that checks to see if the 2 objects share any key-value pairs
+	* loop through each key-value pair until the end of the object
+		* IF
+			* RETURN true
+		* ELSE
+			* RETURN false
+
+	* END of loop
+END of function
+
+
+
+
+*/
+
+
+/*
+============RELEASE 2==============
+*/
