@@ -114,6 +114,7 @@ function arrayBuilder(integer) {
 // var arrayTest = ["c c", "c", "cccc", " cc c "];
 // var arrayTest = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
 var arrayTest = ["long phrase","longest phrase","longer phrase"];
+
 console.log(longest(arrayTest));
 
 
