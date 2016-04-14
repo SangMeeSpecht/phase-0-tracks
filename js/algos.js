@@ -14,7 +14,15 @@ END of method
 
 */
 
-// RELEASE 0
+//============RELEASE 0==============
+
+// DRIVER CODE
+// var array = ["aa", "aaaa", "aaa", "a"];
+// var array = ["bbbb", "bbb", "bb", "b"];
+// var array = ["c c", "c", "cccc", " cc c "];
+// var array = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
+// var array = ["long phrase","longest phrase","longer phrase"];
+
 function longest() {
 	for (var index = 1; array.length > 1; index += 0) {
 		if (array[0].length > array[index].length) {
@@ -27,4 +35,7 @@ function longest() {
 }
 
 // DRIVER CODE
-longest();
+console.log(longest());
+
+//============RELEASE 1==============
+//============RELEASE 2==============
