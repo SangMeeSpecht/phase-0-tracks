@@ -57,7 +57,6 @@ END of function
 
 // var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
 // var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
-
 var first = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
 var second = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
 
