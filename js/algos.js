@@ -17,7 +17,7 @@ END of function
 // var array = ["bbbb", "bbb", "bb", "b"];
 // var array = ["c c", "c", "cccc", " cc c "];
 // var array = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
-// var array = ["long phrase","longest phrase","longer phrase"];
+var array = ["long phrase","longest phrase","longer phrase"];
 
 function longest() {
 	for (var index = 1; array.length > 1; index += 0) {
@@ -58,8 +58,8 @@ END of function
 // var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
 // var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
 
-// var one = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
-// var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+var one = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
+var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
 
 function match() {
 	var matches = 0;
@@ -102,7 +102,29 @@ define function that takes an integer as an argument and returns an array that h
 	* END of loop
 	* RETURN array
 END of function 
-
 */
+
+function ranString() {
+	var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	var string = ""
+	var stringLength = Math.floor(Math.random() * (11 - 1)) + 1;
+	
+	while(string.length < stringLength) {
+		string += alpha[Math.floor(Math.random() * (26 - 0)) + 0]; 
+	}
+	return string;
+}
+
+function arrayBuild(integer) {
+	var array = [];
+
+	while(array.length < integer) {
+		array.push(ranString());
+	}
+	return array;
+}
+
+// DRIVER CODE
+console.log(arrayBuild(2));
 
 
