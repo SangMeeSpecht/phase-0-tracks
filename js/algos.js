@@ -17,9 +17,9 @@ END of function
 // var array = ["bbbb", "bbb", "bb", "b"];
 // var array = ["c c", "c", "cccc", " cc c "];
 // var array = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
-var array = ["long phrase","longest phrase","longer phrase"];
+var arrayTest = ["long phrase","longest phrase","longer phrase"];
 
-function longest() {
+function longest(array) {
 	for (var index = 1; array.length > 1; index += 0) {
 		if (array[0].length > array[index].length) {
 			array.splice(1, 1);
@@ -31,7 +31,7 @@ function longest() {
 }
 
 // DRIVER CODE
-console.log(longest());
+console.log(longest(arrayTest));
 
 /*
 ============RELEASE 1==============
@@ -58,10 +58,10 @@ END of function
 // var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
 // var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
 
-var one = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
-var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+var first = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
+var second = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
 
-function match() {
+function match(one, two) {
 	var matches = 0;
 	var noMatches = 0
 	
@@ -81,7 +81,7 @@ function match() {
 }
 
 // DRIVER CODE
-console.log(match());
+console.log(match(first, second));
 
 /*
 ============RELEASE 2==============
@@ -104,7 +104,7 @@ define function that takes an integer as an argument and returns an array that h
 END of function 
 */
 
-function ranString() {
+function randomString() {
 	var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 	var string = ""
 	var stringLength = Math.floor(Math.random() * (11 - 1)) + 1;
@@ -115,16 +115,24 @@ function ranString() {
 	return string;
 }
 
-function arrayBuild(integer) {
+function arrayBuilder(integer) {
 	var array = [];
 
 	while(array.length < integer) {
-		array.push(ranString());
+		array.push(randomString());
 	}
 	return array;
 }
 
 // DRIVER CODE
-console.log(arrayBuild(2));
+var number = 4
 
+for(count = 1; count < 11; count++) {
+	testArray = arrayBuilder(number);
+	console.log(testArray);
+	console.log(longest(testArray));
+}
+
+// Add driver code that does the following 10 times: generates an array, prints the array, feeds the array 
+// to your "longest word" function, and prints the result.
 
