@@ -13,12 +13,6 @@ declare function that returns the longest string in the array
 END of function
 */
 
-// var array = ["aa", "aaaa", "aaa", "a"];
-// var array = ["bbbb", "bbb", "bb", "b"];
-// var array = ["c c", "c", "cccc", " cc c "];
-// var array = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
-var arrayTest = ["long phrase","longest phrase","longer phrase"];
-
 function longest(array) {
 	for (var index = 1; array.length > 1; index += 0) {
 		if (array[0].length > array[index].length) {
@@ -29,9 +23,6 @@ function longest(array) {
 	}
 	return "'" + array[0] + "'";
 }
-
-// DRIVER CODE
-console.log(longest(arrayTest));
 
 /*
 ============RELEASE 1==============
@@ -55,11 +46,6 @@ declare function that checks to see if the 2 objects share any key-value pairs
 END of function
 */
 
-// var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
-// var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
-var first = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
-var second = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
-
 function match(one, two) {
 	var matches = 0;
 	var noMatches = 0
@@ -78,9 +64,6 @@ function match(one, two) {
 		return true;
 	}
 }
-
-// DRIVER CODE
-console.log(match(first, second));
 
 /*
 ============RELEASE 2==============
@@ -124,6 +107,26 @@ function arrayBuilder(integer) {
 }
 
 // DRIVER CODE
+
+// Release 0
+// var arrayTest = ["aa", "aaaa", "aaa", "a"];
+// var arrayTest = ["bbbb", "bbb", "bb", "b"];
+// var arrayTest = ["c c", "c", "cccc", " cc c "];
+// var arrayTest = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
+var arrayTest = ["long phrase","longest phrase","longer phrase"];
+console.log(longest(arrayTest));
+
+
+// Release 1
+// var one = {name: "Steven", age: 54, gender: "male", color: "pink"}; 
+// var two = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+var first = {name: "Steven", age: 4, gender: "male", color: "pink"}; 
+var second = {name: "Tamir", age: 54, gender: "female", pet: "lizard"};
+
+console.log(match(first, second));
+
+
+// Release 2
 var number = 4
 
 for(count = 1; count < 11; count++) {
