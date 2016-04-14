@@ -85,4 +85,24 @@ console.log(match());
 
 /*
 ============RELEASE 2==============
+define function that returns a random string with 1-10 characters
+	* define array of each letter in the alphabet and store in variable
+	* define an empty string and store in variable
+	* define a variable that has the value of a random number, with a range of 1-10
+	* define a WHILE loop that loops while the string length is less than the random number
+		* add a letter at a time to the string; select randomly from the alphabet array
+	* END of loop
+	* RETURN string
+END of function
+
+define function that takes an integer as an argument and returns an array that has that many strings
+	* declare an empty array and store in variable
+	* define a WHILE loop that loops while the array length is less than the integer argument
+		* push the return value of the first function into the array
+	* END of loop
+	* RETURN array
+END of function 
+
 */
+
+
