@@ -132,7 +132,3 @@ for(count = 1; count < 11; count++) {
 	console.log(testArray);
 	console.log(longest(testArray));
 }
-
-// Add driver code that does the following 10 times: generates an array, prints the array, feeds the array 
-// to your "longest word" function, and prints the result.
-
