@@ -87,8 +87,8 @@ END of function
 */
 
 function randomString() {
-	var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-	var string = ""
+	var alpha = "abcdefghijklmnopqrstuvwxyz";
+	var string = "";
 	var stringLength = Math.floor(Math.random() * (11 - 1)) + 1;
 	
 	while(string.length < stringLength) {
