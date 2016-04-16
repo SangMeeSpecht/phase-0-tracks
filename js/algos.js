@@ -38,22 +38,12 @@ END of function
 */
 
 function match(one, two) {
-	var matches = 0;
-	var noMatches = 0
-	
 	for (var key in one) {
-	  if (one[key] === two[key]) {
-	   	matches += 1;
-	  } else {
-	  	noMatches += 1;
-	  }
+		if (one[key] === two[key]) {
+	   		return true;
+		}
 	}
-	
-	if(matches === 0) {
-		return false;
-	} else {
-		return true;
-	}
+	return false;
 }
 
 /*
