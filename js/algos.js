@@ -14,15 +14,17 @@ declare function that returns the longest string in the array
 END of function
 */
 
-function longest(array) {
-	for (var index = 1; array.length > 1; index += 0) {
-		if (array[0].length > array[index].length) {
-			array.splice(1, 1);
-		} else {
-			array.splice(0, 1);
-		}
+function longestString(array) {
+	var longest = array[0];
+	
+	for (var index = 1; index < array.length; index++) {
+		if (longest.length < array[index].length) {
+			longest = array[index];
+		} else if (longest.length === array[index].length) {
+			longest += ", " + array[index];
+		} 
 	}
-	return "'" + array[0] + "'";
+	return longest;
 }
 
 /*
@@ -111,7 +113,7 @@ function arrayBuilder(integer) {
 
 // Release 0
 // var arrayTest = ["aa", "aaaa", "aaa", "a"];
-// var arrayTest = ["bbbb", "bbb", "bb", "b"];
+// var arrayTest = ["bbbb", "bbb", "bb", "b", "bbbc"];
 // var arrayTest = ["c c", "c", "cccc", " cc c "];
 // var arrayTest = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
 var arrayTest = ["long phrase","longest phrase","longer phrase"];
@@ -134,5 +136,5 @@ var number = 4
 for(count = 1; count < 11; count++) {
 	testArray = arrayBuilder(number);
 	console.log(testArray);
-	console.log(longest(testArray));
+	console.log(longestString(testArray));
 }
