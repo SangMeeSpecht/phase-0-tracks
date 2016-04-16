@@ -2,15 +2,15 @@
 ============RELEASE 0==============
 declare array, which contains strings of various lengths
 	
-declare function that returns the longest string in the array
-	* assign the first element in the array to a variable
-	* loop through each element in the array, starting at the 2nd element, while it's less than the length of the array
-		* IF the length of the current longest string is equivalent to the string being compared
-			* assign the current string to the current longest string variable
-		* ELSE IF the length of the current longest word is equivalent to the current string
-			* add the current string to the current longest string variable
+declare function that returns the longest string(s) in an array
+	* declare variable that keeps track of the current longest string(s)
+	* loop through each element in the array
+		* IF the element is longer than current longest string(s)
+			* replace the current longest string(s) with the new longest string
+		* ELSE IF the element is equal to the current longest string(s)
+			* add it to the list of current longest string(s)
 	* END of loop
-	* RETURN the value of the longest string variable
+	* RETURN the longest string(s) in the array
 END of function
 */
 
@@ -118,7 +118,7 @@ function arrayBuilder(integer) {
 // var arrayTest = ["d", "dd", "ddd", "dddd", "d dd ddd dd"];
 var arrayTest = ["long phrase","longest phrase","longer phrase"];
 
-console.log(longest(arrayTest));
+console.log(longestString(arrayTest));
 
 
 // Release 1
