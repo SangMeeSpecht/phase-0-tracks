@@ -3,13 +3,14 @@
 declare array, which contains strings of various lengths
 	
 declare function that returns the longest string in the array
-	* loop through each element in the array while the length of the array is greater than 1
-		* IF the length of the first element is greater than the 2nd
-			* delete the 2nd element
-		* ELSE
-			* delete the 1st element
+	* assign the first element in the array to a variable
+	* loop through each element in the array, starting at the 2nd element, while it's less than the length of the array
+		* IF the length of the current longest string is equivalent to the string being compared
+			* assign the current string to the current longest string variable
+		* ELSE IF the length of the current longest word is equivalent to the current string
+			* add the current string to the current longest string variable
 	* END of loop
-	* RETURN the 1st element of the array
+	* RETURN the value of the longest string variable
 END of function
 */
 
