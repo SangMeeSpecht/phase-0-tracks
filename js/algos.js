@@ -95,7 +95,7 @@ function randomString() {
 	var stringLength = Math.floor(Math.random() * (11 - 1)) + 1;
 	
 	while(string.length < stringLength) {
-		string += alpha[Math.floor(Math.random() * (26 - 0)) + 0]; 
+		string += alpha[Math.floor((Math.random() * 26));]; 
 	}
 	return string;
 }
