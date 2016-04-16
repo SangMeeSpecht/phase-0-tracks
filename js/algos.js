@@ -15,13 +15,13 @@ END of function
 */
 
 function longestString(array) {
-	var longest = array[0];
+	var longest = [array[0]];
 	
 	for (var index = 1; index < array.length; index++) {
-		if (longest.length < array[index].length) {
-			longest = array[index];
-		} else if (longest.length === array[index].length) {
-			longest += ", " + array[index];
+		if (longest[0].length < array[index].length) {
+			longest = [array[index]];
+		} else if (longest[0].length === array[index].length) {
+			longest.push(array[index]);
 		} 
 	}
 	return longest;
