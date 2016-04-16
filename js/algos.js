@@ -92,10 +92,10 @@ END of function
 function randomString() {
 	var alpha = "abcdefghijklmnopqrstuvwxyz";
 	var string = "";
-	var stringLength = Math.floor(Math.random() * (11 - 1)) + 1;
+	var stringLength = Math.floor((Math.random() * (11 - 1)) + 1);
 	
 	while(string.length < stringLength) {
-		string += alpha[Math.floor((Math.random() * 26));]; 
+		string += alpha[Math.floor((Math.random() * 26))]; 
 	}
 	return string;
 }
