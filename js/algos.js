@@ -1,7 +1,5 @@
 /*
 ============RELEASE 0==============
-declare array, which contains strings of various lengths
-	
 declare function that returns the longest string(s) in an array
 	* declare variable that keeps track of the current longest string(s)
 	* loop through each element in the array
@@ -29,23 +27,13 @@ function longestString(array) {
 
 /*
 ============RELEASE 1==============
-declare two objects with several key-value pairs
-
 declare function that checks to see if the 2 objects share any key-value pairs
-	* declare variable that keeps track of number of matches
-	* declare variable that keeps track of number of non-matches
 	* loop through each key-value pair until the end of the object
 		* IF key-value pair is equivalent to the other key-value pair
-			* increase match counter by 1
-		* ELSE
-			* increase non-match counter by 1
+			* RETURN true
 		* END of conditional
 	* END of loop
-	* IF the number of matches is equivalent to 0
-		* RETURN false
-	* ELSE
-		* RETURN true
-	* END of conditional
+	* RETURN false 
 END of function
 */
 
