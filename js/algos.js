@@ -73,7 +73,7 @@ function randomString() {
 	var stringLength = Math.floor((Math.random() * (10)) + 1);
 	
 	while(string.length < stringLength) {
-		string += alpha.charAt(Math.floor((Math.random() * 26))); 
+		string += alpha.charAt(Math.floor((Math.random() * alpha.length))); 
 	}
 	return string;
 }
