@@ -49,7 +49,7 @@ function match(one, two) {
 /*
 ============RELEASE 2==============
 define function that returns a random string with 1-10 characters
-	* define array of each letter in the alphabet and store in variable
+	* define list of each letter in the alphabet and store in variable
 	* define an empty string and store in variable
 	* define a variable that has the value of a random number, with a range of 1-10
 	* define a WHILE loop that loops while the string length is less than the random number
@@ -68,12 +68,12 @@ END of function
 */
 
 function randomString() {
-	var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	var alpha = "abcdefghijklmnopqrstuvwxyz";
 	var string = "";
 	var stringLength = Math.floor((Math.random() * (10)) + 1);
 	
 	while(string.length < stringLength) {
-		string += alpha[Math.floor((Math.random() * 26))]; 
+		string += alpha.charAt(Math.floor((Math.random() * 26))); 
 	}
 	return string;
 }
