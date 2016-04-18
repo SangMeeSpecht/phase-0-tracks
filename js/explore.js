@@ -17,7 +17,7 @@ END of conditional
 */
 
 // Reverses string argument
-function(string) {
+function reversed(string) {
 	var reverseString = "";
 	for (index = string.length - 1; index >= 0; index --) {
 		reverseString += string[index];
