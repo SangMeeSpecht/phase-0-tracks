@@ -17,7 +17,7 @@ END of conditional
 */
 
 // Reverses string argument
-var reverse = function(string) {
+function(string) {
 	var reverseString = "";
 	for (index = string.length - 1; index >= 0; index --) {
 		reverseString += string[index];
@@ -26,9 +26,9 @@ var reverse = function(string) {
 }
 
 // DRIVER CODE
-var reversed = reverse("hello");
-console.log(reversed);
+console.log(reversed("hello"));
+var string = "hiya!"
 
 if (1 + 1 == 2) {
-	console.log(reversed);
+	console.log(reversed(string));
 }
