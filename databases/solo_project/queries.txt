@@ -1,10 +1,24 @@
 1. Display the information in one table (either table is fine).
-  *command:
+  *command: SELECT * FROM nintendo_games; 
   *output:
+id          title                                  genre             release_year  single_player  multi_player  console_id
+----------  -------------------------------------  ----------------  ------------  -------------  ------------  ----------
+1           Professor Layton and the Azran Legacy  puzzle/adventure  2014          true           false         5         
+2           Luigi's Mansion: Dark Moon             action/adventure  2013          true           false         5         
+3           Paper Mario Sticker Star               adventure         2012          true           false         5         
+4           Professor Layton and the Miracle Mask  puzzle/adventure  2012          true           false         5         
+5           The Legend of Zelda: Skyward Sword     action/adventure  2011          true           false         2         
+6           Super Smash Bros. for WiiU             fighting          2014          true           true          3         
+7           Super Smash Bros. Melee                fighting          2001          true           true          1         
+8           Mario Party 7                          party             2005          true           true          1         
+9           Mario Kart 8                           racing            2014          true           true          3         
+10          The Legend of Zelda Twilight Princess  action/adventure  2006          true           false         1         
+11          Mario Party DS                         party             2007          true           true          4         
+12          Professor Layton and the Curious Vill  puzzle/adventure  2008          true           false         4
 
 
 2. Update an item that meets some condition (you can choose a condition that makes sense).
-  *command:
+  *command: 
   *output:
 
 
