@@ -1,4 +1,4 @@
-FOR OPTIMAL VIEWING, WIDEN WINDOW TO MAXIMUM CAPACITY
+*********FOR OPTIMAL VIEWING, WIDEN WINDOW TO MAXIMUM CAPACITY**********
 
 1. Display the information in one table (either table is fine).
   *command: SELECT * FROM nintendo_games; 
@@ -22,7 +22,7 @@ id          title                                  genre             release_yea
 
 2. Update an item that meets some condition (you can choose a condition that makes sense).
   *command: UPDATE nintendo_games SET genre="adventure/role-playing" WHERE id=3;
-  *output: none (changes in table shown below)
+  *output: none (table changes shown below)
 
 	3           Paper Mario Sticker Star               adventure/role-p  2012          true           false         5 
 
@@ -31,41 +31,55 @@ id          title                                  genre             release_yea
   *command:SELECT * FROM nintendo_games, consoles WHERE nintendo_games.console_id = consoles.id;
   *output:
 
-id          title                                  genre             release_year  single_player  multi_player  console_id  id          name        type        generation  backwards_compatible
-----------  -------------------------------------  ----------------  ------------  -------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------------
-1           Professor Layton and the Azran Legacy  puzzle/adventure  2014          true           false         5           5           3DS         handheld    8           false               
-2           Luigi's Mansion: Dark Moon             action/adventure  2013          true           false         5           5           3DS         handheld    8           false               
-3           Paper Mario Sticker Star               adventure/role-p  2012          true           false         5           5           3DS         handheld    8           false               
-4           Professor Layton and the Miracle Mask  puzzle/adventure  2012          true           false         5           5           3DS         handheld    8           false               
-5           The Legend of Zelda: Skyward Sword     action/adventure  2011          true           false         2           2           Wii         home        7           true                
-6           Super Smash Bros. for WiiU             fighting          2014          true           true          3           3           WiiU        home        8           true                
-7           Super Smash Bros. Melee                fighting          2001          true           true          1           1           GameCube    home        6           false               
-8           Mario Party 7                          party             2005          true           true          1           1           GameCube    home        6           false               
-9           Mario Kart 8                           racing            2014          true           true          3           3           WiiU        home        8           true                
-10          The Legend of Zelda Twilight Princess  action/adventure  2006          true           false         1           1           GameCube    home        6           false               
-11          Mario Party DS                         party             2007          true           true          4           4           DS          handheld    7           true                
-12          Professor Layton and the Curious Vill  puzzle/adventure  2008          true           false         4           4           DS          handheld    7           true    
+id          title                                  genre             release_year  single_player  multi_player  console_id  id          console_name  type        generation  backwards_compatible
+----------  -------------------------------------  ----------------  ------------  -------------  ------------  ----------  ----------  ------------  ----------  ----------  --------------------
+1           Professor Layton and the Azran Legacy  puzzle/adventure  2014          true           false         5           5           3DS           handheld    8           false               
+2           Luigi's Mansion: Dark Moon             action/adventure  2013          true           false         5           5           3DS           handheld    8           false               
+3           Paper Mario Sticker Star               adventure/role-p  2012          true           false         5           5           3DS           handheld    8           false               
+4           Professor Layton and the Miracle Mask  puzzle/adventure  2012          true           false         5           5           3DS           handheld    8           false               
+5           The Legend of Zelda: Skyward Sword     action/adventure  2011          true           false         2           2           Wii           home        7           true                
+6           Super Smash Bros. for WiiU             fighting          2014          true           true          3           3           WiiU          home        8           true                
+7           Super Smash Bros. Melee                fighting          2001          true           true          1           1           GameCube      home        6           false               
+8           Mario Party 7                          party             2005          true           true          1           1           GameCube      home        6           false               
+9           Mario Kart 8                           racing            2014          true           true          3           3           WiiU          home        8           true                
+10          The Legend of Zelda Twilight Princess  action/adventure  2006          true           false         1           1           GameCube      home        6           false               
+11          Mario Party DS                         party             2007          true           true          4           4           DS            handheld    7           true                
+12          Professor Layton and the Curious Vill  puzzle/adventure  2008          true           false         4           4           DS            handheld    7           true   
 
 
 4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
-  *command: SELECT nintendo_games.title, nintendo_games.genre, consoles.name FROM nintendo_games JOIN consoles ON nintendo_games.console_id = consoles.id;
+  *command: SELECT nintendo_games.title, nintendo_games.genre, consoles.console_name FROM nintendo_games JOIN consoles ON nintendo_games.console_id = consoles.id;
   *output:
 
-title                                  genre             name      
--------------------------------------  ----------------  ----------
-Professor Layton and the Azran Legacy  puzzle/adventure  3DS       
-Luigi's Mansion: Dark Moon             action/adventure  3DS       
-Paper Mario Sticker Star               adventure/role-p  3DS       
-Professor Layton and the Miracle Mask  puzzle/adventure  3DS       
-The Legend of Zelda: Skyward Sword     action/adventure  Wii       
-Super Smash Bros. for WiiU             fighting          WiiU      
-Super Smash Bros. Melee                fighting          GameCube  
-Mario Party 7                          party             GameCube  
-Mario Kart 8                           racing            WiiU      
-The Legend of Zelda Twilight Princess  action/adventure  GameCube  
-Mario Party DS                         party             DS        
-Professor Layton and the Curious Vill  puzzle/adventure  DS
+title                                  genre             console_name
+-------------------------------------  ----------------  ------------
+Professor Layton and the Azran Legacy  puzzle/adventure  3DS         
+Luigi's Mansion: Dark Moon             action/adventure  3DS         
+Paper Mario Sticker Star               adventure/role-p  3DS         
+Professor Layton and the Miracle Mask  puzzle/adventure  3DS         
+The Legend of Zelda: Skyward Sword     action/adventure  Wii         
+Super Smash Bros. for WiiU             fighting          WiiU        
+Super Smash Bros. Melee                fighting          GameCube    
+Mario Party 7                          party             GameCube    
+Mario Kart 8                           racing            WiiU        
+The Legend of Zelda Twilight Princess  action/adventure  GameCube    
+Mario Party DS                         party             DS          
+Professor Layton and the Curious Vill  puzzle/adventure  DS 
 
 5.Delete an item that meets some condition (you can choose a condition that makes sense).
-  *command:
-  *output:
+  *command: DELETE FROM nintendo_games WHERE console_id=1;
+  *output: none (table changes shown below)
+
+id          title                                  genre             release_year  single_player  multi_player  console_id
+----------  -------------------------------------  ----------------  ------------  -------------  ------------  ----------
+1           Professor Layton and the Azran Legacy  puzzle/adventure  2014          true           false         5         
+2           Luigi's Mansion: Dark Moon             action/adventure  2013          true           false         5         
+3           Paper Mario Sticker Star               adventure/role-p  2012          true           false         5         
+4           Professor Layton and the Miracle Mask  puzzle/adventure  2012          true           false         5         
+5           The Legend of Zelda: Skyward Sword     action/adventure  2011          true           false         2         
+6           Super Smash Bros. for WiiU             fighting          2014          true           true          3         
+9           Mario Kart 8                           racing            2014          true           true          3         
+11          Mario Party DS                         party             2007          true           true          4         
+12          Professor Layton and the Curious Vill  puzzle/adventure  2008          true           false         4 
+
+
