@@ -1,5 +1,7 @@
 *********FOR OPTIMAL VIEWING, WIDEN WINDOW TO MAXIMUM CAPACITY**********
 
+RELEASE 2
+
 1. Display the information in one table (either table is fine).
   *command: SELECT * FROM nintendo_games; 
   *output:
@@ -82,4 +84,86 @@ id          title                                  genre             release_yea
 11          Mario Party DS                         party             2007          true           true          4         
 12          Professor Layton and the Curious Vill  puzzle/adventure  2008          true           false         4 
 
+
+RELEASE 3
+
+1.
+INNER JOINS (will not display items without matching values; 'inner' keyword is optional)
+*cross inner join: displays every row of first table with every row of second table
+*inner join: default join; joins columns of tables based on the join condition
+*natural inner join: similar to an inner join, except without the conditions; will automatically join matching column names
+
+OUTER JOINS (will display items without matching values with 'null')
+*left outer join: joins values from left table with right, even if there are no matching values in the right table; if there are no matching data, 'null' will be displayed instead; must specify which two columns to compare
+*natural left outer join: automatically joins matching column names (do not need to specify which columns to compare); will put 'null' for data that doesn't have a match
+
+*Can you apply different conditions to a join to change what's displayed?: yes, it just needs to be specified in the join statement (what you're selecting)
+
+*diagrams: http://www.w3resource.com/sqlite/sqlite-inner-join.php
+
+
+2.
+CROSS INNER JOIN
+*command: SELECT title, release_year, console_name FROM nintendo_games CROSS JOIN consoles;
+*output: (does not make sense in this datatable context)
+
+title                                  release_year  console_name
+-------------------------------------  ------------  ------------
+Professor Layton and the Azran Legacy  2014          GameCube    
+Professor Layton and the Azran Legacy  2014          Wii         
+Professor Layton and the Azran Legacy  2014          WiiU        
+Professor Layton and the Azran Legacy  2014          DS          
+Professor Layton and the Azran Legacy  2014          3DS         
+Luigi's Mansion: Dark Moon             2013          GameCube    
+Luigi's Mansion: Dark Moon             2013          Wii         
+Luigi's Mansion: Dark Moon             2013          WiiU        
+Luigi's Mansion: Dark Moon             2013          DS          
+Luigi's Mansion: Dark Moon             2013          3DS         
+Paper Mario Sticker Star               2012          GameCube    
+Paper Mario Sticker Star               2012          Wii         
+Paper Mario Sticker Star               2012          WiiU        
+Paper Mario Sticker Star               2012          DS          
+Paper Mario Sticker Star               2012          3DS         
+Professor Layton and the Miracle Mask  2012          GameCube    
+Professor Layton and the Miracle Mask  2012          Wii         
+Professor Layton and the Miracle Mask  2012          WiiU        
+Professor Layton and the Miracle Mask  2012          DS          
+Professor Layton and the Miracle Mask  2012          3DS         
+The Legend of Zelda: Skyward Sword     2011          GameCube    
+The Legend of Zelda: Skyward Sword     2011          Wii         
+The Legend of Zelda: Skyward Sword     2011          WiiU        
+The Legend of Zelda: Skyward Sword     2011          DS          
+The Legend of Zelda: Skyward Sword     2011          3DS         
+Super Smash Bros. for WiiU             2014          GameCube    
+Super Smash Bros. for WiiU             2014          Wii         
+Super Smash Bros. for WiiU             2014          WiiU        
+Super Smash Bros. for WiiU             2014          DS          
+Super Smash Bros. for WiiU             2014          3DS         
+Mario Kart 8                           2014          GameCube    
+Mario Kart 8                           2014          Wii         
+Mario Kart 8                           2014          WiiU        
+Mario Kart 8                           2014          DS          
+Mario Kart 8                           2014          3DS         
+Mario Party DS                         2007          GameCube    
+Mario Party DS                         2007          Wii         
+Mario Party DS                         2007          WiiU        
+Mario Party DS                         2007          DS          
+Mario Party DS                         2007          3DS         
+Professor Layton and the Curious Vill  2008          GameCube    
+Professor Layton and the Curious Vill  2008          Wii         
+Professor Layton and the Curious Vill  2008          WiiU        
+Professor Layton and the Curious Vill  2008          DS          
+Professor Layton and the Curious Vill  2008          3DS
+
+NATURAL INNER JOIN
+*command: SELECT title, console_name FROM nintendo_games NATURAL JOIN consoles;
+*output: (matched id names from nintendo_games with consoles; does not make sense in this datatable context)
+
+title                                  console_name
+-------------------------------------  ------------
+Professor Layton and the Azran Legacy  GameCube    
+Luigi's Mansion: Dark Moon             Wii         
+Paper Mario Sticker Star               WiiU        
+Professor Layton and the Miracle Mask  DS          
+The Legend of Zelda: Skyward Sword     3DS 
 
