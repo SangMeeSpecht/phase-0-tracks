@@ -1,0 +1,23 @@
+1. Display the information in one table (either table is fine).
+  *command:
+  *output:
+
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+  *command:
+  *output:
+
+
+3. Display the information in both tables using one query.
+  *command:
+  *output:
+
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+  *command:
+  *output:
+
+
+5.Delete an item that meets some condition (you can choose a condition that makes sense).
+  *command:
+  *output:
