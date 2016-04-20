@@ -1,0 +1,23 @@
+Release 2 queries
+
+SELECT * FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id; 
+	id          first_name  last_name   id          stars       comment      business_id  user_id     id          name
+	----------  ----------  ----------  ----------  ----------  -----------  -----------  ----------  ----------  --------------------
+	1           Bradford    Pitt        1           5           Great food!  1            1           1           The Beagle Nightclub
+	2           Mandy       Kaling      2           1           My leg got   2            2           2           Lotus Yoga
+	3           Angela      Jolie       3           3           Good food,   3            3           3           Sushi World
+	2           Mandy       Kaling      4           4           Great for t  3            2           3           Sushi World
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id;
+	first_name  last_name   name                  stars       comment
+	----------  ----------  --------------------  ----------  -----------
+	Bradford    Pitt        The Beagle Nightclub  5           Great food!
+	Mandy       Kaling      Lotus Yoga            1           My leg got
+	Angela      Jolie       Sushi World           3           Good food,
+	Mandy       Kaling      Sushi World           4           Great for t
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id WHERE businesses.id=3;
+	first_name  last_name   name         stars       comment
+	----------  ----------  -----------  ----------  -------------------------
+	Angela      Jolie       Sushi World  3           Good food, too expensive!
+	Mandy       Kaling      Sushi World  4           Great for the whole famil
