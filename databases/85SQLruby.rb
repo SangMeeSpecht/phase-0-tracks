@@ -34,6 +34,10 @@ create 'renters' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
 
+FAVORITES TABLE
+create 'favorites' table (if is doesn't already exist) and save in variable
+  * see schema for content
+END of table
 =end
 
 require "sqlite3"
@@ -42,45 +46,47 @@ require "faker"
 db = SQLite3::Database.new("apartment_hunter.db")
 db.results_as_hash = true
 
-# LANDLORD DATA
-# create_landlord_table = <<-SQL
-	# CREATE TABLE IF NOT EXISTS landlords(
-    # id INTEGER PRIMARY KEY,
-    # name VARCHAR(255),
-    # neighborhood VARCHAR(255),
-    # rent INT,
-    # bedrooms INT,
-    # bathrooms INT,
-    # parking BOOLEAN
-	# )
-# SQL
-# 
-# db.execute(create_landlord_table)
-# 
-# test
-# db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Louise Hudson', 'Lakeview', 1200, 2, 1, 'true')")
-# 
-# def hood_selector
-	# chicago = ["Albany Park", "Andersonville", "Avondale", "Beverly", "Boystown", "Bridgeport", "Bronzeville", 
-						 # "Chinatown", "Edgewater", "Gold Coast", "Humboldt Park", "Hyde Park", "Irving Park", "Jefferson Park", 
-						 # "Kenwood", "Lakeview", "Lincoln Park", "Lincoln Square", "Litte Italy & University Village", 
-						 # "Little Village", "Logan Square", "Loop", "Magnificent Mile", "North Center", "North Park", "Old Town", 
-						 # "Pilsen", "Portage Park", "Pullman", "River North", "Rogers Park", "Roscoe Village", "South Loop", 
-						 # "South Shore", "Streeterville", "Uptown", "West Loop", "West Ridge", "West Town", "Wicker Park/Bucktown", 
-						 # "Wrigleyville"]
-  # chicago.sample
-# end
-# 
-# def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
-	# db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, '#{neighborhood}', '#{rent}', '#{bedrooms}', '#{bathrooms}', '#{parking}')", [name])
-# end
-# 
-# 99.times do
-	# create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(0..5), ["true", "false"].sample)
-# end
+=begin
 
- # RENTER DATA
- create_renter_table = <<-SQL
+# LANDLORD DATA
+create_landlord_table = <<-SQL
+	CREATE TABLE IF NOT EXISTS landlords(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    neighborhood VARCHAR(255),
+    rent INT,
+    bedrooms INT,
+    bathrooms INT,
+    parking BOOLEAN
+	)
+SQL
+ 
+db.execute(create_landlord_table)
+
+# test
+db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Louise Hudson', 'Lakeview', 1200, 2, 1, 'true')")
+
+def hood_selector
+	chicago = ["Albany Park", "Andersonville", "Avondale", "Beverly", "Boystown", "Bridgeport", "Bronzeville", 
+						 "Chinatown", "Edgewater", "Gold Coast", "Humboldt Park", "Hyde Park", "Irving Park", "Jefferson Park", 
+						 "Kenwood", "Lakeview", "Lincoln Park", "Lincoln Square", "Litte Italy & University Village", 
+						 "Little Village", "Logan Square", "Loop", "Magnificent Mile", "North Center", "North Park", "Old Town", 
+						 "Pilsen", "Portage Park", "Pullman", "River North", "Rogers Park", "Roscoe Village", "South Loop", 
+						 "South Shore", "Streeterville", "Uptown", "West Loop", "West Ridge", "West Town", "Wicker Park/Bucktown", 
+						 "Wrigleyville"]
+  chicago.sample
+end
+
+def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
+	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, '#{neighborhood}', '#{rent}', '#{bedrooms}', '#{bathrooms}', '#{parking}')", [name])
+end
+
+99.times do
+	create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(0..5), ["true", "false"].sample)
+end
+
+# RENTER DATA
+create_renter_table = <<-SQL
  CREATE TABLE IF NOT EXISTS renters(
    id INTEGER PRIMARY KEY,
    name VARCHAR(255),
@@ -93,6 +99,11 @@ db.results_as_hash = true
 	)
  SQL
  
- db.execute(create_renter_table)
+db.execute(create_renter_table) 
+# test
+db.execute("INSERT INTO renters (name, username, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Peggy Olsen', 'OlePeg', 'Old Town', 1200, 1, 1, 'false')")
 
+=end
+
+# FAVORITES DATA
 
