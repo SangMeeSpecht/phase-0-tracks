@@ -7,7 +7,7 @@ PSEUDOCODE
 require 'sqlite3' and 'faker' gems
 
 create new SQLite3 database and save in variable
-save data items as a hash
+save data items in hash
 
 create 'owner' table (if is doesn't already exist) and save in variable
   * see schema for content
@@ -25,5 +25,29 @@ END of method
 END of loop
 
 =end
+
+require "sqlite3"
+require "faker"
+
+db = SQLite3::Database.new("apartment_hunter.db")
+db.results_as_hash = true
+
+owner_table = <<-SQL
+	CREATE TABLE IF NOT EXISTS owners(
+    id INTEGER PRIMARY KEY,
+    username VARCHAR(255),
+    neighborhood VARCHAR(255),
+    rent INT,
+    bedrooms INT,
+    bathrooms INT,
+    parking BOOLEAN
+	)
+SQL
+
+db.execute(owner_table)
+
+
+
+
 
 
