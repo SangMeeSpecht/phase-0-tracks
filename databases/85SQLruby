@@ -4,5 +4,26 @@ I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  W
 
 PSEUDOCODE
 
+require 'sqlite3' and 'faker' gems
+
+create new SQLite3 database and save in variable
+save data items as a hash
+
+create 'owner' table (if is doesn't already exist) and save in variable
+  * see schema for content
+  * END of table
+
+execute 'owner' table 
+
+define method to create fake 'owner' data that takes table, 'owner' username, and apartment details as arguments
+	* insert fake data
+END of method
+
+100 times DO
+	* list of Chicago neighborhoods (won't be able to use 'faker' gem for this)
+	* add fake 'owner' data to 'owner' table using 'faker' gem
+END of loop
 
 =end
+
+
