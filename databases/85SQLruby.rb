@@ -35,7 +35,7 @@ db.results_as_hash = true
 create_landlord_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS landlords(
     id INTEGER PRIMARY KEY,
-    username VARCHAR(255),
+    name VARCHAR(255),
     neighborhood VARCHAR(255),
     rent INT,
     bedrooms INT,
@@ -47,7 +47,8 @@ SQL
 db.execute(create_landlord_table)
 
 # test
-db.execute("INSERT INTO landlords (username, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Mrs. Hudson', 'Lakeview', 1200, 2, 1, 'true')")
+db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Louise Hudson', 'Lakeview', 1200, 2, 1, 'true')")
+
 
 
 
