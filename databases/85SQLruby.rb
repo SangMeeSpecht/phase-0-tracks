@@ -34,17 +34,47 @@ create 'renters' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
 
+define method that returns apartments that match renters criteria
+
+END of method
+
 FAVORITES TABLE
 create 'favorites' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
+
+USER INTERFACE
+prompt for renter username
+save answer in variable
+
+prompt for desired neighborhood
+save answer in variable
+
+prompt for max monthly rent price
+save answer in variable
+
+prompt for number of bedrooms desired
+save answer in variable
+
+prompt for number of bathrooms desired
+save answer in variable
+
+prompt for parking
+save answer in variable 
+declare counter for index number
+
+LOOP through landlord table
+	if renter criteria is all equal to landlord data
+		print array
+	END of conditional
+	add +1 to index counter
+END of loop
 =end
 
 require "sqlite3"
 require "faker"
 
 db = SQLite3::Database.new("apartment_hunter.db")
-db.results_as_hash = true
 
 =begin
 
@@ -103,8 +133,6 @@ db.execute(create_renter_table)
 # test
 db.execute("INSERT INTO renters (name, username, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Peggy Olsen', 'OlePeg', 'Old Town', 1200, 1, 1, 'false')")
 
-=end
-
 # FAVORITES DATA
 create_favorites_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS favorites(
@@ -116,3 +144,11 @@ create_favorites_table = <<-SQL
 	)
 SQL
 db.execute(create_favorites_table) 
+
+=end 
+
+# USER INTERFACE
+
+
+
+
