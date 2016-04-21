@@ -47,7 +47,7 @@ SQL
 db.execute(create_landlord_table)
 
 # test
-db.execute("INSERT INTO landlords (username, neightborhood, rent, bedrooms, bathrooms, parking) VALUES ("Mrs. Hudson", "Lakeview", 1200, 2, 1, "true")")
+db.execute("INSERT INTO landlords (username, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Mrs. Hudson', 'Lakeview', 1200, 2, 1, 'true')")
 
 
 
