@@ -19,12 +19,12 @@ define method to create fake 'landlord' data that takes table, 'landlord' userna
 	* insert fake data
 END of method
 
-define method that selects random Chicago neighborhood
+define method that selects random Chicago neighborhood and takes an argument of database table and name
 	list of Chicago neighborhoods
 	select random neighborhood
 END of method
 
-100 times DO
+99 times DO
 	* add fake 'landlord' data to 'landlord' table using 'faker' gem
 END of loop
 
@@ -64,10 +64,13 @@ def hood_selector
   chicago.sample
 end
 
-def create_landlords(db, name)
-	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, hood_selector, rand(600..5000), rand(0..5), rand(0...5), ["true", "false"].sample)", [name])
+def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
+	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, '#{neighborhood}', '#{rent}', '#{bedrooms}', '#{bathrooms}', '#{parking}')", [name])
 end
 
+99.times do
+	create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(0..5), ["true", "false"].sample)
+end
 
 
 
