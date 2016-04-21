@@ -19,8 +19,12 @@ define method to create fake 'landlord' data that takes table, 'landlord' userna
 	* insert fake data
 END of method
 
+define method that selects random Chicago neighborhood
+	list of Chicago neighborhoods
+	select random neighborhood
+END of method
+
 100 times DO
-	* list of Chicago neighborhoods (won't be able to use 'faker' gem for this)
 	* add fake 'landlord' data to 'landlord' table using 'faker' gem
 END of loop
 
@@ -49,6 +53,20 @@ db.execute(create_landlord_table)
 # test
 db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Louise Hudson', 'Lakeview', 1200, 2, 1, 'true')")
 
+def hood_selector
+	chicago = ["Albany Park", "Andersonville", "Avondale", "Beverly", "Boystown", "Bridgeport", "Bronzeville", 
+						 "Chinatown", "Edgewater", "Gold Coast", "Humboldt Park", "Hyde Park", "Irving Park", "Jefferson Park", 
+						 "Kenwood", "Lakeview", "Lincoln Park", "Lincoln Square", "Litte Italy & University Village", 
+						 "Little Village", "Logan Square", "Loop", "Magnificent Mile", "North Center", "North Park", "Old Town", 
+						 "Pilsen", "Portage Park", "Pullman", "River North", "Rogers Park", "Roscoe Village", "South Loop", 
+						 "South Shore", "Streeterville", "Uptown", "West Loop", "West Ridge", "West Town", "Wicker Park/Bucktown", 
+						 "Wrigleyville"]
+  chicago.sample
+end
+
+def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
+	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES")
+end
 
 
 
