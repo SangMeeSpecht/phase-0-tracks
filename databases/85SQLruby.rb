@@ -42,6 +42,7 @@ require "faker"
 db = SQLite3::Database.new("apartment_hunter.db")
 db.results_as_hash = true
 
+# LANDLORD DATA
 # create_landlord_table = <<-SQL
 	# CREATE TABLE IF NOT EXISTS landlords(
     # id INTEGER PRIMARY KEY,
@@ -78,6 +79,20 @@ db.results_as_hash = true
 	# create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(0..5), ["true", "false"].sample)
 # end
 
-
+ # RENTER DATA
+ create_renter_table = <<-SQL
+ CREATE TABLE IF NOT EXISTS renters(
+   id INTEGER PRIMARY KEY,
+   name VARCHAR(255),
+   username VARCHAR(255),
+   neighborhood VARCHAR(255),
+   rent INT,
+   bedrooms INT,
+   bathrooms INT,
+   parking BOOLEAN
+	)
+ SQL
+ 
+ db.execute(create_renter_table)
 
 
