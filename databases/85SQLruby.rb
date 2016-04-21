@@ -106,4 +106,13 @@ db.execute("INSERT INTO renters (name, username, neighborhood, rent, bedrooms, b
 =end
 
 # FAVORITES DATA
-
+create_favorites_table = <<-SQL
+	CREATE TABLE IF NOT EXISTS favorites(
+    id INTEGER PRIMARY KEY,
+    renters_id INT,
+    landlords_id INT,
+    FOREIGN KEY (renters_id) REFERENCES renters(id)
+    FOREIGN KEY (landlords_id) REFERENCES landlords(id)
+	)
+SQL
+db.execute(create_favorites_table) 
