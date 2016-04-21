@@ -64,8 +64,8 @@ def hood_selector
   chicago.sample
 end
 
-def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
-	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES")
+def create_landlords(db, name)
+	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, hood_selector, rand(600..5000), rand(0..5), rand(0...5), ["true", "false"].sample)", [name])
 end
 
 
