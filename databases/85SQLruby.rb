@@ -113,7 +113,7 @@ def apt_search(db, hood, rent, bed, bath, park, un)
 	else
 		all_rentals.each do |apartment|
 			if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
-				puts
+				puts "Here are your search results:"
 				puts "neighborhood: #{apartment[2]}"
 				puts "rent: #{apartment[3]}"
 				puts "bedrooms: #{apartment[4]}"
@@ -147,7 +147,7 @@ until answer == "Y" || answer == "N"
 				un = gets.chomp
 				un_valid.each do |user|
 					if user[2] == un
-						puts "Welcome back #{user[2]}!"
+						puts "\nWelcome back #{user[2]}!"
 						un = user[0]
 						existing_user = true
 					end
@@ -192,40 +192,54 @@ until answer == "Y" || answer == "N"
 	end
 end
 
-puts "What what would you like to do? (1-4)"
-puts "1. Search for apartments"
-puts "2. Display 'favorite' apartments"
-puts "3. Delete items in 'favorite' apartments"
-puts "4. Quit"
-option = gets.chomp.to_i
+puts "\nWhat what would you like to do? (1-4)"
+option = ""
 
-# renter criteria questionaire 
-puts "Please fill in the criteria below to get your apartment search started."
+until option == 4 
+	puts "1  Search for apartments"
+	puts "2  Display 'favorite' apartments"
+	puts "3  Delete items in 'favorite' apartments"
+	puts "4  Quit"
+	option = gets.chomp.to_i
 
-puts "What is your desired neighborhood?"
-neighborhood = gets.chomp
+	case option 
+	when 1
+		# renter criteria questionaire 
+		puts "\nPlease fill in the criteria below to get your apartment search started."
+		
+		puts "What is your desired neighborhood?"
+		neighborhood = gets.chomp
+		
+		puts "What is the maximum monthly rent you would like to pay?"
+		price = gets.chomp.to_i
+		
+		puts "How many bedrooms would you like?"
+		bedroom = gets.chomp.to_i
+		
+		puts "How many bathrooms would you like?"
+		bathroom = gets.chomp.to_i
+		
+		puts "Is parking desired? (Y/N)"
+		parking = gets.chomp.upcase
+		if parking == "Y"
+			parking = "true"
+		else
+			parking = "false"
+		end
+	
+		apt_search(db, neighborhood, price, bedroom, bathroom, parking, un)
+	when 2
+		puts db.execute("\nSELECT landlords.id, landlords.neighborhood, landlords.rent, landlords.bedrooms, landlords.bathrooms, landlords.parking FROM favorites JOIN landlords ON favorites.landlords_id = landlords.id WHERE favorites.renters_id = #{un};")
+	when 3
+	when 4
+		puts "Goodbye!"
+		break
+	else 
+		puts "I don't understand that command"
+	end
 
-puts "What is the maximum monthly rent you would like to pay?"
-price = gets.chomp.to_i
-
-puts "How many bedrooms would you like?"
-bedroom = gets.chomp.to_i
-
-puts "How many bathrooms would you like?"
-bathroom = gets.chomp.to_i
-
-puts "Is parking desired? (Y/N)"
-parking = gets.chomp.upcase
-if parking == "Y"
-	parking = "true"
-else
-	parking = "false"
+puts "\nWhat else would you like to do?"
 end
-
-apt_search(db, neighborhood, price, bedroom, bathroom, parking, un)
-
-
-
 
 
 
