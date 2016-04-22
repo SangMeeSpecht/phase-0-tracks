@@ -166,6 +166,15 @@ db.execute("INSERT INTO renters (name, username) VALUES ('Peggy Olsen', 'OlePeg'
 def create_user(db, name, username)
 	db.execute("INSERT INTO renters (name, username) VALUES (?, ?)", [name, username])
 end
+
+def username_checker(db, username)
+	unique = db.execute("SELECT * FROM renters")
+	unique.each do |user|
+		if user[2] == username
+			return false
+		end
+	end
+end
 =begin
 # FAVORITES DATA
 create_favorites_table = <<-SQL
@@ -234,19 +243,18 @@ until answer == "Y" || answer == "N"
 			answer2 = gets.chomp.upcase 
 			if answer2 == "Y"
 				puts "Enter your name"
-					name = gets.chomp
+				name = gets.chomp
+				puts "Enter a username"
 				is_unique = false
 				until is_unique == true
-				puts "Enter a username"
 					username = gets.chomp
-					unique = db.execute("SELECT * FROM renters")
-					unique.each do |user|
-						if username == user[2]
-							puts "That username already exists.  Please choose another username."
-						else 
-							create_user(db, name, username)
-							is_unique = true
-						end
+					un_checker = username_checker(db, username)
+					if un_checker == false
+						puts "That username already exists.  Please choose another username."
+					else
+						create_user(db, name, username)
+						puts "You've successfully created an account."
+						break
 					end
 				end
 			elsif answer2 == "N"
@@ -262,6 +270,8 @@ until answer == "Y" || answer == "N"
 end
 
 # renter criteria questionaire 
+
+
 puts "What is your desired neighborhood?"
 neighborhood = gets.chomp
 
