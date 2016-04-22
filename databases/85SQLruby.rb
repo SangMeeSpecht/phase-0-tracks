@@ -179,31 +179,54 @@ create_favorites_table = <<-SQL
 SQL
 db.execute(create_favorites_table) 
 =end
+def add_to_fav(db, hood, rent, bed, bath, park)
+	all_rentals = db.execute("SELECT * FROM landlords")
+	all_rentals.each do |apartment|
+		if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
+			puts
+			puts "neighborhood: #{apartment[2]}"
+			puts "rent: #{apartment[3]}"
+			puts "bedrooms: #{apartment[4]}"
+			puts "bathroooms: #{apartment[5]}"
+			puts "parking: #{apartment[6]}"
+			puts "Would you like to add this listing to your favorites? (Y/N)"
+			add_to_fav = gets.chomp.upcase
+					if add_to_fav == "Y"
+						db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (#{un}, #{apartment[0]})")
+			end
+		end
+	end
+end
+
+#============USER INTERFACE=============
 
 
-# USER INTERFACE
 puts "Do you have an account? (Y/N)"
 answer = ""
 
+# "signs-in" user OR creates an account for user OR skips account creation
 until answer == "Y" || answer == "N"
 	answer = gets.chomp.upcase
 	if answer == "Y"
 		un_valid = db.execute("SELECT * FROM renters")
-		un_is_valid = "false"
-		until un_is_valid == "true"
-			un_valid.each do |user|
-				puts "Enter your username"
+		puts "Enter your username"
+
+		existing_user = "false"
+		until existing_user == "true"
 				un = gets.chomp
-				if un == user[2]
-					puts "Welcome back #{user[2]}!"
-				  	un = user[0]
-				  	un_is_valid = "true"
-				else
-				  	puts "That user does not exist."
-				  	puts "Error: Please enter a valid username."
+				un_valid.each do |user|
+					if user[2] == un
+						puts "Welcome back #{user[2]}!"
+						un = user[0]
+						existing_user = "true"
+					end
 				end
+			if x == "false"
+				puts "That user does not exist."
+				puts "Error: Please enter a valid username."
 			end
 		end
+
 	elsif answer == "N"
 		puts "Would you like to create one? (Y/N)"
 		answer2 = ""
@@ -232,30 +255,34 @@ until answer == "Y" || answer == "N"
 				puts "Error: Please enter 'Y' or 'N'."
 			end
 		end
+		
 	else 
 		puts "Error: Please enter 'Y' or 'N'."
 	end
 end
 
+# renter criteria questionaire 
 puts "What is your desired neighborhood?"
-hood = gets.chomp
+neighborhood = gets.chomp
 
 puts "What is the maximum monthly rent you would like to pay?"
-rent = gets.chomp.to_i
+price = gets.chomp.to_i
 
 puts "How many bedrooms would you like?"
-bed = gets.chomp.to_i
+bedroom = gets.chomp.to_i
 
 puts "How many bathrooms would you like?"
-bath = gets.chomp.to_i
+bathroom = gets.chomp.to_i
 
 puts "Is parking desired? (Y/N)"
-park = gets.chomp.upcase
-if park == "Y"
-	park = "true"
+parking = gets.chomp.upcase
+if parking == "Y"
+	parking = "true"
 else
-	park = "false"
+	parking = "false"
 end
+
+add_to_fav(db, neighborhood, price, bedroom, bathroom, parking)
 
 
 
