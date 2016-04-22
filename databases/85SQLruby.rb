@@ -1,6 +1,9 @@
 =begin
 DESCRIPTION:
-I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  When I was moving, I relied heavily on different websites to search for a new place.  This is an attempt at a primitive apartment hunter database.  Renters can search for apartments based on specified critera, add apartments that they're interested in, and landlords can list place(s) they want to rent.    
+I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  When I was moving, I relied 
+heavily on different websites to search for a new place.  This is an attempt at a primitive apartment hunter 
+database.  Renters can search for apartments based on specified critera and add or delete apartments 
+they're interested in, in a 'favorites' table.
 
 PSEUDOCODE
 
@@ -9,7 +12,7 @@ require 'sqlite3' and 'faker' gems
 create new SQLite3 database and save in variable
 save data items in hash
 
-LANDLORD TABLE
+=======LANDLORD TABLE===========
 create 'landlord' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
@@ -29,21 +32,53 @@ END of method
 	* add fake 'landlord' data to 'landlord' table using 'faker' gem
 END of loop
 
-RENTERS TABLE
+=======RENTERS TABLE==========
 create 'renters' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
 
-define method that returns apartments that match renters criteria
-
+define method that adds a username to renters table
+	* insert name and username into renters database
 END of method
 
-FAVORITES TABLE
+========FAVORITES TABLE==========
 create 'favorites' table (if is doesn't already exist) and save in variable
   * see schema for content
 END of table
 
-USER INTERFACE
+===========USER INTERFACE=========
+print welcome message
+
+ask user if they have an account
+UNTIL user enters correct option
+	* store answer in variable
+	* IF yes
+		* ask what username is
+			* IF username exists
+				* welcome user
+			* ELSE
+				* print that user does not exist
+				* ask for their username again
+			END of conditional 
+		* ELSIF no
+			* ask if they would like to create one
+			* until user enters correct option
+				* store answer in variable
+				IF yes
+					* ask what you would like username to be
+						* IF username exists
+							* print that username already exists
+						* ELSE 
+							* create new user in rentals table
+						* END of conditional 
+				ELSIF no
+					* tell them they can search for apartments but their results will not be saved
+				ELSE
+					* ask for their answer again
+				END of conditional
+		END of conditional
+END of loop
+
 prompt for renter username
 save answer in variable
 
@@ -120,19 +155,18 @@ create_renter_table = <<-SQL
  CREATE TABLE IF NOT EXISTS renters(
    id INTEGER PRIMARY KEY,
    name VARCHAR(255),
-   username VARCHAR(255),
-   neighborhood VARCHAR(255),
-   rent INT,
-   bedrooms INT,
-   bathrooms INT,
-   parking BOOLEAN
+   username VARCHAR(255)
 	)
  SQL
  
 db.execute(create_renter_table) 
 # test
-db.execute("INSERT INTO renters (name, username, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Peggy Olsen', 'OlePeg', 'Old Town', 1200, 1, 1, 'false')")
-
+db.execute("INSERT INTO renters (name, username) VALUES ('Peggy Olsen', 'OlePeg')")
+=end
+def create_user(db, name, username)
+	db.execute("INSERT INTO renters (name, username) VALUES (?, ?)", [name, username])
+end
+=begin
 # FAVORITES DATA
 create_favorites_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS favorites(
@@ -144,10 +178,65 @@ create_favorites_table = <<-SQL
 	)
 SQL
 db.execute(create_favorites_table) 
+=end
 
-=end 
 
 # USER INTERFACE
+puts "Do you have an account? (Y/N)"
+answer = ""
+
+until answer == "Y" || answer == "N"
+	answer = gets.chomp.upcase
+	if answer == "Y"
+		un_valid = db.execute("SELECT * FROM renters")
+		un_is_valid = "false"
+		until un_is_valid == "true"
+			un_valid.each do |user|
+				puts "Enter your username"
+				un = gets.chomp
+				if un == user[2]
+					puts "Welcome back #{user[2]}!"
+				  	un = user[0]
+				  	un_is_valid = "true"
+				else
+				  	puts "That user does not exist."
+				  	puts "Error: Please enter a valid username."
+				end
+			end
+		end
+	elsif answer == "N"
+		puts "Would you like to create one? (Y/N)"
+		answer2 = ""
+		until answer2 == "Y" || answer2 == "N"
+			answer2 = gets.chomp.upcase 
+			if answer2 == "Y"
+				puts "Enter your name"
+					name = gets.chomp
+				is_unique = false
+				until is_unique == true
+				puts "Enter a username"
+					username = gets.chomp
+					unique = db.execute("SELECT * FROM renters")
+					unique.each do |user|
+						if username == user[2]
+							puts "That username already exists.  Please choose another username."
+						else 
+							create_user(db, name, username)
+							is_unique = true
+						end
+					end
+				end
+			elsif answer2 == "N"
+				puts "Any rental search favorites will not be saved"
+			else 
+				puts "Error: Please enter 'Y' or 'N'."
+			end
+		end
+	else 
+		puts "Error: Please enter 'Y' or 'N'."
+	end
+end
+
 puts "What is your desired neighborhood?"
 hood = gets.chomp
 
@@ -164,29 +253,14 @@ puts "Is parking desired? (Y/N)"
 park = gets.chomp.upcase
 if park == "Y"
 	park = "true"
-elsif 
+else
 	park = "false"
 end
 
-all_rentals = db.execute("SELECT * FROM landlords")
-all_rentals.each do |apartment|
-	if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
-		puts
-		puts "neighborhood: #{apartment[2]}"
-		puts "rent: #{apartment[3]}"
-		puts "bedrooms: #{apartment[4]}"
-		puts "bathroooms: #{apartment[4]}"
-		puts "parking: #{apartment[5]}"
-		puts "Would you like to add this listing to your favorites? (Y/N)"
-		add_to_fav = gets.chomp.upcase
-	end
-end
 
 
-# kittens = db.execute("SELECT * FROM kittens")
-# kittens.each do |kitten|
-#  puts "#{kitten['name']} is #{kitten['age']}"
-# end
+
+
 
 
 
