@@ -94,8 +94,19 @@ create_favorites_table = <<-SQL
     FOREIGN KEY (landlords_id) REFERENCES landlords(id)
 	)
 SQL
-db.execute(create_favorites_table) 
 =end
+def current_favorites(db, un)
+			current_favs = db.execute("SELECT landlords.id, landlords.neighborhood, landlords.rent, landlords.bedrooms, landlords.bathrooms, landlords.parking FROM favorites JOIN landlords ON favorites.landlords_id = landlords.id WHERE favorites.renters_id = #{un}")
+			current_favs.each do |fav|
+				puts "\nLandlord ID: #{fav[0]}"
+				puts "Neighborhood: #{fav[1]}"
+				puts "Rent: #{fav[2]}"
+				puts "Bedrooms: #{fav[3]}"
+				puts "Bathrooms: #{fav[4]}"
+				puts "Parking: #{fav[5]}"
+			end
+end
+
 
 def apt_search(db, hood, rent, bed, bath, park, un)
 	all_rentals = db.execute("SELECT * FROM landlords")
@@ -226,11 +237,26 @@ until option == 4
 		else
 			parking = "false"
 		end
-	
 		apt_search(db, neighborhood, price, bedroom, bathroom, parking, un)
 	when 2
-		puts db.execute("\nSELECT landlords.id, landlords.neighborhood, landlords.rent, landlords.bedrooms, landlords.bathrooms, landlords.parking FROM favorites JOIN landlords ON favorites.landlords_id = landlords.id WHERE favorites.renters_id = #{un};")
+		current_favorites(db, un)
 	when 3
+		puts "Enter the landlord ID of the apartment you would like to remove from your favorites list."
+		puts "If you are done deleting, enter 'quit'."
+		response = ""
+		until response == "quit"
+			response = gets.chomp
+			if response != "quit" 
+				response.to_i
+				delete_fav = db.execute()
+				puts "#{response} successfully deleted."
+				puts "Please enter another landlord ID to delete.  If you are done, enter 'quit'."
+			elsif response == "quit"
+				break
+			else
+				puts "Error"
+			end
+		end
 	when 4
 		puts "Goodbye!"
 		break
