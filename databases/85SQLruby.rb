@@ -148,7 +148,45 @@ db.execute(create_favorites_table)
 =end 
 
 # USER INTERFACE
+puts "What is your desired neighborhood?"
+hood = gets.chomp
 
+puts "What is the maximum monthly rent you would like to pay?"
+rent = gets.chomp.to_i
+
+puts "How many bedrooms would you like?"
+bed = gets.chomp.to_i
+
+puts "How many bathrooms would you like?"
+bath = gets.chomp.to_i
+
+puts "Is parking desired? (Y/N)"
+park = gets.chomp.upcase
+if park == "Y"
+	park = "true"
+elsif 
+	park = "false"
+end
+
+all_rentals = db.execute("SELECT * FROM landlords")
+all_rentals.each do |apartment|
+	if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
+		puts
+		puts "neighborhood: #{apartment[2]}"
+		puts "rent: #{apartment[3]}"
+		puts "bedrooms: #{apartment[4]}"
+		puts "bathroooms: #{apartment[4]}"
+		puts "parking: #{apartment[5]}"
+		puts "Would you like to add this listing to your favorites? (Y/N)"
+		add_to_fav = gets.chomp.upcase
+	end
+end
+
+
+# kittens = db.execute("SELECT * FROM kittens")
+# kittens.each do |kitten|
+#  puts "#{kitten['name']} is #{kitten['age']}"
+# end
 
 
 
