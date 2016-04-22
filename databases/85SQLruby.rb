@@ -170,7 +170,7 @@ puts "Welcome to the 'Apartment Hunter App' where we find the perfect Chicago ap
 puts "Do you have an account? (Y/N)"
 answer = ""
 
-# "signs-in" user OR creates an account for user OR skips account creation
+# "signs-in" user OR creates an account for user OR skips account creation 
 until answer == "Y" || answer == "N"
 	answer = gets.chomp.upcase
 	if answer == "Y"
@@ -277,11 +277,11 @@ until option == 4
 		response = ""
 		until response == "quit"
 			response = gets.chomp
-			if response != "quit" 
+			if response == "quit"
+				break
+			else
 				delete_fav(db, un, response)
 				puts "Please enter another landlord ID to delete.  If you are done, enter 'quit'."
-			elsif response == "quit"
-				break
 			end
 		end
 	
