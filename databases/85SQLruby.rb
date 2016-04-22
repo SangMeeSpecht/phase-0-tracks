@@ -1,109 +1,17 @@
-=begin
-DESCRIPTION:
-I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  When I was moving, I relied 
-heavily on different websites to search for a new place.  This is an attempt at a primitive apartment hunter 
-database.  Renters can search for apartments based on specified critera and add or delete apartments 
-they're interested in, in a 'favorites' table.
+=begin 
 
-PSEUDOCODE
+==========LANDLORDS===========
+==========RENTERS=============
+==========FAVORITES===========
 
-require 'sqlite3' and 'faker' gems
 
-create new SQLite3 database and save in variable
-save data items in hash
+==========METHODS===========
+define method to add apartment(s) to favorites list
+define method to delete apartment(s) from favorites list
+define method to display apartment(s) from favorite list
 
-=======LANDLORD TABLE===========
-create 'landlord' table (if is doesn't already exist) and save in variable
-  * see schema for content
-END of table
 
-execute 'landlord' table 
-
-define method to create fake 'landlord' data that takes table, 'landlord' username, and apartment details as arguments
-	* insert fake data
-END of method
-
-define method that selects random Chicago neighborhood and takes an argument of database table and name
-	list of Chicago neighborhoods
-	select random neighborhood
-END of method
-
-99 times DO
-	* add fake 'landlord' data to 'landlord' table using 'faker' gem
-END of loop
-
-=======RENTERS TABLE==========
-create 'renters' table (if is doesn't already exist) and save in variable
-  * see schema for content
-END of table
-
-define method that adds a username to renters table
-	* insert name and username into renters database
-END of method
-
-========FAVORITES TABLE==========
-create 'favorites' table (if is doesn't already exist) and save in variable
-  * see schema for content
-END of table
-
-===========USER INTERFACE=========
-print welcome message
-
-ask user if they have an account
-UNTIL user enters correct option
-	* store answer in variable
-	* IF yes
-		* ask what username is
-			* IF username exists
-				* welcome user
-			* ELSE
-				* print that user does not exist
-				* ask for their username again
-			END of conditional 
-		* ELSIF no
-			* ask if they would like to create one
-			* until user enters correct option
-				* store answer in variable
-				IF yes
-					* ask what you would like username to be
-						* IF username exists
-							* print that username already exists
-						* ELSE 
-							* create new user in rentals table
-						* END of conditional 
-				ELSIF no
-					* tell them they can search for apartments but their results will not be saved
-				ELSE
-					* ask for their answer again
-				END of conditional
-		END of conditional
-END of loop
-
-prompt for renter username
-save answer in variable
-
-prompt for desired neighborhood
-save answer in variable
-
-prompt for max monthly rent price
-save answer in variable
-
-prompt for number of bedrooms desired
-save answer in variable
-
-prompt for number of bathrooms desired
-save answer in variable
-
-prompt for parking
-save answer in variable 
-declare counter for index number
-
-LOOP through landlord table
-	if renter criteria is all equal to landlord data
-		print array
-	END of conditional
-	add +1 to index counter
-END of loop
+==========USER INTERFACE===========
 =end
 
 require "sqlite3"
@@ -188,7 +96,7 @@ create_favorites_table = <<-SQL
 SQL
 db.execute(create_favorites_table) 
 =end
-def add_to_fav(db, hood, rent, bed, bath, park)
+def add_to_fav(db, hood, rent, bed, bath, park, un)
 	all_rentals = db.execute("SELECT * FROM landlords")
 	all_rentals.each do |apartment|
 		if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
@@ -200,15 +108,15 @@ def add_to_fav(db, hood, rent, bed, bath, park)
 			puts "parking: #{apartment[6]}"
 			puts "Would you like to add this listing to your favorites? (Y/N)"
 			add_to_fav = gets.chomp.upcase
-					if add_to_fav == "Y"
-						db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (#{un}, #{apartment[0]})")
-			end
+				if add_to_fav == "Y"
+					db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (#{un}, #{apartment[0]})")
+				end
 		end
 	end
 end
 
 #============USER INTERFACE=============
-
+puts "Welcome to the Apartment Hunter App where we find the perfect apartment just for you!"
 
 puts "Do you have an account? (Y/N)"
 answer = ""
@@ -247,12 +155,12 @@ until answer == "Y" || answer == "N"
 				puts "Enter a username"
 				is_unique = false
 				until is_unique == true
-					username = gets.chomp
-					un_checker = username_checker(db, username)
+					un = gets.chomp
+					un_checker = username_checker(db, un)
 					if un_checker == false
 						puts "That username already exists.  Please choose another username."
 					else
-						create_user(db, name, username)
+						create_user(db, name, un)
 						puts "You've successfully created an account."
 						break
 					end
@@ -269,8 +177,18 @@ until answer == "Y" || answer == "N"
 	end
 end
 
-# renter criteria questionaire 
+puts "What what would you like to do? (1-4)"
+puts "1. Search for apartments"
+one = gets.chomp.to_i
+puts "2. Display 'favorite' apartments"
+two = gets.chomp.to_i
+puts "3. Delete items in 'favorite' apartments"
+three = gets.chomp.to_i
+puts "4. Quit"
+four = gets.chomp
 
+# renter criteria questionaire 
+puts "Please fill in the criteria below to get your apartment search started."
 
 puts "What is your desired neighborhood?"
 neighborhood = gets.chomp
@@ -292,7 +210,7 @@ else
 	parking = "false"
 end
 
-add_to_fav(db, neighborhood, price, bedroom, bathroom, parking)
+add_to_fav(db, neighborhood, price, bedroom, bathroom, parking, un)
 
 
 
