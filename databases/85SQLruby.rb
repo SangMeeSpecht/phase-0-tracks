@@ -21,7 +21,8 @@ db = SQLite3::Database.new("apartment_hunter.db")
 
 =begin
 
-# LANDLORD DATA
+# ===============DATA TABLES===============
+# creates 'landlords' table 
 create_landlord_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS landlords(
     id INTEGER PRIMARY KEY,
@@ -36,9 +37,10 @@ SQL
  
 db.execute(create_landlord_table)
 
-# test
+# test (insert data into 'landlord' table)
 db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES ('Louise Hudson', 'Lakeview', 1200, 2, 1, 'true')")
 
+# selects random Chicago neighborhood 
 def hood_selector
 	chicago = ["Albany Park", "Andersonville", "Avondale", "Beverly", "Boystown", "Bridgeport", "Bronzeville", 
 						 "Chinatown", "Edgewater", "Gold Coast", "Humboldt Park", "Hyde Park", "Irving Park", "Jefferson Park", 
@@ -50,15 +52,17 @@ def hood_selector
   chicago.sample
 end
 
+# create and insert 'landlords' data
 def create_landlords(db, name, neighborhood, rent, bedrooms, bathrooms, parking)
 	db.execute("INSERT INTO landlords (name, neighborhood, rent, bedrooms, bathrooms, parking) VALUES (?, '#{neighborhood}', '#{rent}', '#{bedrooms}', '#{bathrooms}', '#{parking}')", [name])
 end
 
+# insert 99 landlords into 'landlords' table
 99.times do
-	create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(0..5), ["true", "false"].sample)
+	create_landlords(db, Faker::Name.name, hood_selector, rand(500..5000), rand(0..5), rand(1..5), ["true", "false"].sample)
 end
 
-# RENTER DATA
+# creates 'renters' table
 create_renter_table = <<-SQL
  CREATE TABLE IF NOT EXISTS renters(
    id INTEGER PRIMARY KEY,
@@ -68,23 +72,11 @@ create_renter_table = <<-SQL
  SQL
  
 db.execute(create_renter_table) 
-# test
-db.execute("INSERT INTO renters (name, username) VALUES ('Peggy Olsen', 'OlePeg')")
-=end
-def create_user(db, name, username)
-	db.execute("INSERT INTO renters (name, username) VALUES (?, ?)", [name, username])
-end
 
-def username_checker(db, username)
-	unique = db.execute("SELECT * FROM renters")
-	unique.each do |user|
-		if user[2] == username
-			return false
-		end
-	end
-end
-=begin
-# FAVORITES DATA
+# test (insert data into 'renters')
+db.execute("INSERT INTO renters (name, username) VALUES ('Peggy Olsen', 'OlePeg')")
+
+# creates 'favorites' table
 create_favorites_table = <<-SQL
 	CREATE TABLE IF NOT EXISTS favorites(
     id INTEGER PRIMARY KEY,
@@ -95,7 +87,26 @@ create_favorites_table = <<-SQL
 	)
 SQL
 =end
+
+# ===============METHODS===============
+# creates new user in 'renters' table
+def create_user(db, name, username)
+	db.execute("INSERT INTO renters (name, username) VALUES (?, ?)", [name, username])
+end
+
+# checks if username already exists in 'renters' table
+def username_checker(db, username)
+	unique = db.execute("SELECT * FROM renters")
+	unique.each do |user|
+		if user[2] == username
+			return false
+		end
+	end
+end
+
+# displays user's saved apartments in 'favorites' table
 def current_favorites(db, un)
+			puts "Here are your favorite apartments you've saved:"
 			current_favs = db.execute("SELECT landlords.id, landlords.neighborhood, landlords.rent, landlords.bedrooms, landlords.bathrooms, landlords.parking FROM favorites JOIN landlords ON favorites.landlords_id = landlords.id WHERE favorites.renters_id = #{un}")
 			current_favs.each do |fav|
 				puts "\nLandlord ID: #{fav[0]}"
@@ -107,42 +118,55 @@ def current_favorites(db, un)
 			end
 end
 
+# deletes user's saved apartment in 'favorites' table
+def delete_fav(db, un, response)
+	response.to_i
+	delete_fav = db.execute("DELETE FROM favorites WHERE landlords_id = #{response} AND renters_id = #{un}")
+	puts "#{response} successfully deleted."
+end
 
+# searches through apartments and displays apartments that match the criteria
+def search_results(db, hood, rent, bed, bath, park, un, apartment)
+	if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
+		puts
+		puts "Neighborhood: #{apartment[2]}"
+		puts "Rent: #{apartment[3]}"
+		puts "Bedrooms: #{apartment[4]}"
+		puts "Bathroooms: #{apartment[5]}"
+		if apartment[6] == true
+			puts "Parking: yes"
+		else
+			puts "Parking: no"
+		end
+	end
+end
+
+# searches through apartments that match criteria and saves user's apartments in 'favorites' table
 def apt_search(db, hood, rent, bed, bath, park, un)
 	all_rentals = db.execute("SELECT * FROM landlords")
 	if un == ""
+		puts "\nHere are your search results:"
 		all_rentals.each do |apartment|
-			if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
-				puts
-				puts "neighborhood: #{apartment[2]}"
-				puts "rent: #{apartment[3]}"
-				puts "bedrooms: #{apartment[4]}"
-				puts "bathroooms: #{apartment[5]}"
-				puts "parking: #{apartment[6]}"
-			end
+			search_results(db, hood, rent, bed, bath, park, un, apartment)
 		end
 	else
+		puts "\nHere are your search results:"
 		all_rentals.each do |apartment|
 			if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
-				puts "Here are your search results:"
-				puts "neighborhood: #{apartment[2]}"
-				puts "rent: #{apartment[3]}"
-				puts "bedrooms: #{apartment[4]}"
-				puts "bathroooms: #{apartment[5]}"
-				puts "parking: #{apartment[6]}"
+				search_results(db, hood, rent, bed, bath, park, un, apartment)
 				puts "Would you like to add this listing to your favorites? (Y/N)"
 				add = gets.chomp.upcase
 				if add == "Y"
-					db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (#{un}, #{apartment[0]})")
+					db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (?, #{apartment[0]})", [un])
 				end
 			end
 		end
 	end 
+	puts "\nEnd of search."
 end
 
-#============USER INTERFACE=============
-puts "Welcome to the Apartment Hunter App where we find the perfect apartment just for you!"
-
+# ============USER INTERFACE=============
+puts "Welcome to the 'Apartment Hunter App' where we find the perfect Chicago apartment just for you!"
 puts "Do you have an account? (Y/N)"
 answer = ""
 
@@ -152,7 +176,6 @@ until answer == "Y" || answer == "N"
 	if answer == "Y"
 		un_valid = db.execute("SELECT * FROM renters")
 		puts "Enter your username"
-
 		existing_user = false
 		until existing_user == true
 				un = gets.chomp
@@ -203,31 +226,36 @@ until answer == "Y" || answer == "N"
 	end
 end
 
+# user options 
 puts "\nWhat what would you like to do? (1-4)"
 option = ""
 
 until option == 4 
 	puts "1  Search for apartments"
-	puts "2  Display 'favorite' apartments"
-	puts "3  Delete items in 'favorite' apartments"
+	puts "2  Display 'favorite' apartments (username required)"
+	puts "3  Delete items in 'favorite' apartments (username required)"
 	puts "4  Quit"
 	option = gets.chomp.to_i
 
 	case option 
 	when 1
-		# renter criteria questionaire 
 		puts "\nPlease fill in the criteria below to get your apartment search started."
-		
 		puts "What is your desired neighborhood?"
+		puts "Albany Park, Andersonville, Avondale, Beverly, Boystown, Bridgeport, Bronzeville, Chinatown" 
+		puts "Edgewater, Gold Coast, Humboldt Park, Hyde Park, Irving Park, Jefferson Park, Kenwood, Lakeview" 
+		puts "Lincoln Park, Lincoln Square, Litte Italy & University Village, Little Village, Logan Square, Loop"
+		puts "Magnificent Mile, North Center, North Park, Old Town, Pilsen, Portage Park, Pullman, River North"
+		puts "Rogers Park, Roscoe Village, South Loop, South Shore, Streeterville, Uptown, West Loop, West Ridge"
+		puts "West Town, Wicker Park/Bucktown, Wrigleyville"
 		neighborhood = gets.chomp
 		
 		puts "What is the maximum monthly rent you would like to pay?"
 		price = gets.chomp.to_i
 		
-		puts "How many bedrooms would you like?"
+		puts "What is the minimum number of bedrooms would you like?"
 		bedroom = gets.chomp.to_i
 		
-		puts "How many bathrooms would you like?"
+		puts "What is the minimum number of bathrooms would you like?"
 		bathroom = gets.chomp.to_i
 		
 		puts "Is parking desired? (Y/N)"
@@ -238,8 +266,10 @@ until option == 4
 			parking = "false"
 		end
 		apt_search(db, neighborhood, price, bedroom, bathroom, parking, un)
+	
 	when 2
 		current_favorites(db, un)
+	
 	when 3
 		puts "Enter the landlord ID of the apartment you would like to remove from your favorites list."
 		puts "If you are done deleting, enter 'quit'."
@@ -247,27 +277,18 @@ until option == 4
 		until response == "quit"
 			response = gets.chomp
 			if response != "quit" 
-				response.to_i
-				delete_fav = db.execute()
-				puts "#{response} successfully deleted."
+				delete_fav(db, un, response)
 				puts "Please enter another landlord ID to delete.  If you are done, enter 'quit'."
 			elsif response == "quit"
 				break
-			else
-				puts "Error"
 			end
 		end
+	
 	when 4
-		puts "Goodbye!"
+		puts "Happy apartment hunting!  Goodbye!"
 		break
 	else 
-		puts "I don't understand that command"
+		puts "I don't understand that command."
 	end
-
 puts "\nWhat else would you like to do?"
 end
-
-
-
-
-
