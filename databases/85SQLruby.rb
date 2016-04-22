@@ -96,23 +96,37 @@ create_favorites_table = <<-SQL
 SQL
 db.execute(create_favorites_table) 
 =end
-def add_to_fav(db, hood, rent, bed, bath, park, un)
+
+def apt_search(db, hood, rent, bed, bath, park, un)
 	all_rentals = db.execute("SELECT * FROM landlords")
-	all_rentals.each do |apartment|
-		if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
-			puts
-			puts "neighborhood: #{apartment[2]}"
-			puts "rent: #{apartment[3]}"
-			puts "bedrooms: #{apartment[4]}"
-			puts "bathroooms: #{apartment[5]}"
-			puts "parking: #{apartment[6]}"
-			puts "Would you like to add this listing to your favorites? (Y/N)"
-			add_to_fav = gets.chomp.upcase
-				if add_to_fav == "Y"
+	if un == ""
+		all_rentals.each do |apartment|
+			if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
+				puts
+				puts "neighborhood: #{apartment[2]}"
+				puts "rent: #{apartment[3]}"
+				puts "bedrooms: #{apartment[4]}"
+				puts "bathroooms: #{apartment[5]}"
+				puts "parking: #{apartment[6]}"
+			end
+		end
+	else
+		all_rentals.each do |apartment|
+			if hood == apartment[2] && rent >= apartment[3] && bed <= apartment[4] && bath <= apartment[5] && park == apartment[6]
+				puts
+				puts "neighborhood: #{apartment[2]}"
+				puts "rent: #{apartment[3]}"
+				puts "bedrooms: #{apartment[4]}"
+				puts "bathroooms: #{apartment[5]}"
+				puts "parking: #{apartment[6]}"
+				puts "Would you like to add this listing to your favorites? (Y/N)"
+				add = gets.chomp.upcase
+				if add == "Y"
 					db.execute("INSERT INTO favorites (renters_id, landlords_id) VALUES (#{un}, #{apartment[0]})")
 				end
+			end
 		end
-	end
+	end 
 end
 
 #============USER INTERFACE=============
@@ -167,6 +181,7 @@ until answer == "Y" || answer == "N"
 				end
 			elsif answer2 == "N"
 				puts "Any rental search favorites will not be saved"
+				un = ""
 			else 
 				puts "Error: Please enter 'Y' or 'N'."
 			end
@@ -179,13 +194,10 @@ end
 
 puts "What what would you like to do? (1-4)"
 puts "1. Search for apartments"
-one = gets.chomp.to_i
 puts "2. Display 'favorite' apartments"
-two = gets.chomp.to_i
 puts "3. Delete items in 'favorite' apartments"
-three = gets.chomp.to_i
 puts "4. Quit"
-four = gets.chomp
+option = gets.chomp.to_i
 
 # renter criteria questionaire 
 puts "Please fill in the criteria below to get your apartment search started."
@@ -210,7 +222,7 @@ else
 	parking = "false"
 end
 
-add_to_fav(db, neighborhood, price, bedroom, bathroom, parking, un)
+apt_search(db, neighborhood, price, bedroom, bathroom, parking, un)
 
 
 
