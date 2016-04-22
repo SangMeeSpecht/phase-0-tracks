@@ -211,17 +211,17 @@ until answer == "Y" || answer == "N"
 		un_valid = db.execute("SELECT * FROM renters")
 		puts "Enter your username"
 
-		existing_user = "false"
-		until existing_user == "true"
+		existing_user = false
+		until existing_user == true
 				un = gets.chomp
 				un_valid.each do |user|
 					if user[2] == un
 						puts "Welcome back #{user[2]}!"
 						un = user[0]
-						existing_user = "true"
+						existing_user = true
 					end
 				end
-			if x == "false"
+			if existing_user == false
 				puts "That user does not exist."
 				puts "Error: Please enter a valid username."
 			end
@@ -255,7 +255,7 @@ until answer == "Y" || answer == "N"
 				puts "Error: Please enter 'Y' or 'N'."
 			end
 		end
-		
+
 	else 
 		puts "Error: Please enter 'Y' or 'N'."
 	end
