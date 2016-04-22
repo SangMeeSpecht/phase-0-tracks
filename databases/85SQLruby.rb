@@ -133,7 +133,7 @@ def search_results(db, hood, rent, bed, bath, park, un, apartment)
 		puts "Rent: #{apartment[3]}"
 		puts "Bedrooms: #{apartment[4]}"
 		puts "Bathroooms: #{apartment[5]}"
-		if apartment[6] == true
+		if apartment[6] == "true"
 			puts "Parking: yes"
 		else
 			puts "Parking: no"
@@ -240,13 +240,14 @@ until option == 4
 	case option 
 	when 1
 		puts "\nPlease fill in the criteria below to get your apartment search started."
-		puts "What is your desired neighborhood?"
+		puts "\nWhat is your desired neighborhood?"
 		puts "Albany Park, Andersonville, Avondale, Beverly, Boystown, Bridgeport, Bronzeville, Chinatown" 
 		puts "Edgewater, Gold Coast, Humboldt Park, Hyde Park, Irving Park, Jefferson Park, Kenwood, Lakeview" 
 		puts "Lincoln Park, Lincoln Square, Litte Italy & University Village, Little Village, Logan Square, Loop"
 		puts "Magnificent Mile, North Center, North Park, Old Town, Pilsen, Portage Park, Pullman, River North"
 		puts "Rogers Park, Roscoe Village, South Loop, South Shore, Streeterville, Uptown, West Loop, West Ridge"
 		puts "West Town, Wicker Park/Bucktown, Wrigleyville"
+		puts	
 		neighborhood = gets.chomp
 		
 		puts "What is the maximum monthly rent you would like to pay?"
@@ -285,10 +286,10 @@ until option == 4
 		end
 	
 	when 4
-		puts "Happy apartment hunting!  Goodbye!"
+		puts "\nHappy apartment hunting!  Goodbye!"
 		break
 	else 
-		puts "I don't understand that command."
+		puts "Error: input not recognized."
 	end
 puts "\nWhat else would you like to do?"
 end
