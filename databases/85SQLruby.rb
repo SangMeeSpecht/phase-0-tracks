@@ -1,17 +1,128 @@
 =begin 
+DESCRIPTION:
+I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  When I was moving, I relied 
+heavily on different websites to search for a new place.  This is an attempt at a very primitive apartment 
+hunter database.  Renters can search for apartments based on specific critera and add or delete apartments 
+they're interested in, in a 'favorites' table (only if they create a username first).
 
-==========LANDLORDS===========
-==========RENTERS=============
-==========FAVORITES===========
+PSEUDOCODE
+==========DATA TABLES=========
+use 'sqlite3' and 'faker' gems
 
+create new database 
+
+create 'landlords' table if it doesn't exist
+	* integer primary key
+	* name
+	* neighborhood
+	* rent price
+	* number of bedrooms
+	* number of bathrooms
+	* parking availability
+END
+
+define method that returns random Chicago neighborhood
+	* list of Chicago neighborhoods
+	* randomly select one neighborhood
+END of method
+
+define method to insert data into 'landlords' table
+	* populate 'landlords' table with fictional data with 'faker' gem
+END
+
+loop through method to make x number of rows for 'landlords' table
+	* insert data into 'landlords' table
+END
+
+create 'renters' table if it doesn't exist
+	* integer primary key
+	* name
+	*username
+END
+
+create 'favorites' table
+	* integer primary key
+	* foreign renters_id key
+	* foreign landlords_id key
+END
 
 ==========METHODS===========
-define method to add apartment(s) to favorites list
-define method to delete apartment(s) from favorites list
-define method to display apartment(s) from favorite list
+define method to add new user into 'renters' table
+	* insert name and username into 'renters' table
+END of method
 
+define method to check if username exists in 'renters' table
+	* IF name is not unique
+		*RETURN false
+END of method
+
+define method to list apartments from user's 'favorites' table (must have username)
+	* LOOP through each row in 'favorite' list
+		* print user's favorite apartments
+	* END of loop
+END of method
+
+define method to delete apartment(s) from 'favorites' table
+	* delete selected apartments from 'favorites' table
+END of method
+
+define method to gather apartment(s) that match their criteria
+	* search through current row in the 'landlords' table for that particular user
+			* prints row's apartment information
+END of method 
+
+define method to display apartments and give users with username option to save apartments
+	* IF user has a username
+		* LOOP through each row in 'landlords' table 
+			* print apartments that match their criteria
+			* ask if they would like to save apartment to 'favorites' table
+				* insert listing into 'favorites' if "yes"
+				* go onto next listing if "no"
+		* END of loop
+	* ELSE if they don't have a username
+		* LOOP through each row in 'landlords' table
+			* print apartments that match their criteria 
+		* END of loop
+	* END of conditional 
+END of method
 
 ==========USER INTERFACE===========
+ask user if they have a username
+UNTIL they answer "yes" or "no"
+	* IF "yes"
+		* ask for username
+	* ELSE IF "no"
+		* ask if they would like to create one
+			* IF "yes"
+				* IF username exists
+					* print "username already exists"
+				* ELSE 
+					* create new username and store in 'renters' table
+				* END
+			ELSE IF "no"
+				* exit loop
+			END of conditional
+	ELSE
+		* display error
+	END of conditional 
+END of until loop
+
+UNTIL user inputs "quit"
+	* print options 
+	 * search apartments
+	 * view 'favorites'
+	 * delete 'favorites' 
+	 * quit
+	* WHEN user chooses to search apartments
+		* ask user series of questions to narrow search
+	* WHEN user chooses to view 'favorites'
+		* print all of the 'favorites' from the 'favorites' table
+	* WHEN user chooses delete 'favorites'
+		* delete their 'favorites' from 'favorites' table
+	* WHEN user chooses "quit"
+		* break loop
+	* END
+* END of loop
 =end
 
 require "sqlite3"
