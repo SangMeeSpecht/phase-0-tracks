@@ -1,4 +1,5 @@
 =begin 
+.
 DESCRIPTION:
 I've lived in Chicago for 4.5 years and have moved to 6 different apartments.  When I was moving, I relied 
 heavily on different websites to search for a new place.  This is an attempt at a very primitive apartment 
