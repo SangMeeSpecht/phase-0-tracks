@@ -1,4 +1,4 @@
-console.log("Connecting files")
+console.log("Connecting files");
 
 
 var add_items = document.createElement("li");
@@ -15,3 +15,31 @@ btn.appendChild(node2);
 
 var add_more_exercise = document.getElementById("home_exercises");
 add_more_exercise.appendChild(btn);
+
+function addExercises(event) {
+	// console.log("Click on the button to add more exercises.");
+	console.log(event);
+	event.target.style.border = "4px solid green";
+}
+
+var test = document.getElementById("home_exercises");
+test.addEventListener("click", addExercises);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
