@@ -2,12 +2,12 @@ console.log("Connecting files");
 
 // Release 1
 // Add another list element
-var add_items = document.createElement("li");
+var addItems = document.createElement("li");
 var node = document.createTextNode("Lunges");
-add_items.appendChild(node);
+addItems.appendChild(node);
 
-var add_exercise = document.getElementById("home_exercises");
-add_exercise.appendChild(add_items);
+var addExercise = document.getElementById("home_exercises");
+addExercise.appendChild(addItems);
 
 // Release 2
 // Add another list element with an event listener
@@ -17,12 +17,12 @@ function addExercises(event) {
 
 	console.log(event);
 
-	var add_items = document.createElement("li");
-	var node = document.createTextNode(rand);
-	add_items.appendChild(node);
+	var addMoreItems = document.createElement("li");
+	var node2 = document.createTextNode(rand);
+	addMoreItems.appendChild(node2);
 
-	var add_exercise = document.getElementById("home_exercises");
-	add_exercise.appendChild(add_items);
+	var addMoreExercise = document.getElementById("home_exercises");
+	addMoreExercise.appendChild(addMoreItems);
 }
 
 var test = document.getElementById("add_exercises");
