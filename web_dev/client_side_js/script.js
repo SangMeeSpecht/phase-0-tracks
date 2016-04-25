@@ -10,10 +10,12 @@ add_exercise.appendChild(add_items);
 
 // Release 2
 function addExercises(event) {
-	// console.log("Click on the button to add more exercises.");
+	var exerciseOptions = ["dead lifts", "eliptical", "crunches"];
+	var rand = exerciseOptions[Math.floor(Math.random() * exerciseOptions.length)];
+
 	console.log(event);
 	var add_items = document.createElement("li");
-	var node = document.createTextNode("Dead lifts");
+	var node = document.createTextNode(rand);
 	add_items.appendChild(node);
 
 	var add_exercise = document.getElementById("home_exercises");
