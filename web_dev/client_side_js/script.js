@@ -11,7 +11,7 @@ addExercise.appendChild(addItems);
 
 // Release 2
 // Add another list element with an event listener
-function addExercises(event) {
+function addExercises() {
 	var exerciseOptions = ["Dead lifts", "Eliptical", "Crunches"];
 	var rand = exerciseOptions[Math.floor(Math.random() * exerciseOptions.length)];
 
