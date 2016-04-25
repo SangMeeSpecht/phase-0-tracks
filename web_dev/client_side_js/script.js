@@ -27,22 +27,3 @@ function addExercises(event) {
 
 var test = document.getElementById("add_exercises");
 test.addEventListener("click", addExercises);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
