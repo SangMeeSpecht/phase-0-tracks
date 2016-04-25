@@ -18,6 +18,6 @@ Release 1
   * https://blog.servermania.com/the-5-major-benefits-of-using-a-virtual-private-server/
 
 3. Bonus: Why is it considered a bad idea to run programs as the root user on a Linux system?
-  * You can accidentally modify system files when running a program as a root user and it also leavea your computer vulernable   to malicious or buggy applications.    
+  * You can accidentally modify system files when running a program as a root user and it also leaves your computer vulernable   to malicious or buggy applications.    
   
   * http://www.howtogeek.com/124950/htg-explains-why-you-shouldnt-log-into-your-linux-system-as-root/
