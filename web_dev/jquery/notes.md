@@ -15,6 +15,7 @@ jQuery Notes
 * most popular JavaScript library
 * free and open-source software
 * usually used to create dynamic web pages and apps
+* in HTML head tag, need to either include the jQuery script(`<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>`) or download it
 * link file into HTML with this syntax: `<script type = "text/javascript" src="filename.js"></script>`
 * simple syntax --> `$(document).ready(something);`
 	* `$()` --> notifies jQuery that something is about to happen
@@ -88,3 +89,5 @@ jQuery Notes
 
 http://www.dummies.com/how-to/content/jquery-for-dummies-cheat-sheet.html
 https://en.wikipedia.org/wiki/JQuery
+http://www.w3schools.com/jquery/jquery_get_started.asp
+http://jquery.com/download/
