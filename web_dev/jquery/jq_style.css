@@ -2,12 +2,12 @@ body {
 	background-color: black;
 }
 
-div {
-	text-align: center;
-}
-
 .light {
 	background-color: white;
+}
+
+div {
+	text-align: center;
 }
 
 #lightbulb {
@@ -29,4 +29,8 @@ footer {
 footer a {
 	color: white;
 	font-style: italic;
+}
+
+.black_font {
+	color: black;
 }
