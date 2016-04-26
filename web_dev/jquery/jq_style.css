@@ -1,0 +1,32 @@
+body {
+	background-color: black;
+}
+
+div {
+	text-align: center;
+}
+
+.light {
+	background-color: white;
+}
+
+#lightbulb {
+	width: 30%;
+	height: 40%;
+}
+
+#button {
+	margin-top: 50px;
+	cursor: pointer;
+}
+
+footer {
+	color: white;
+	text-align: center;
+	margin-top: 200px;
+}
+
+footer a {
+	color: white;
+	font-style: italic;
+}
