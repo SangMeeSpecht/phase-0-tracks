@@ -76,7 +76,7 @@ get 'add/:number_1/:number_2' do
 	sum = num1.to_i + num2.to_i
 	"#{num1} + #{num2} = #{sum}"
 end
-# hhttp://127.0.0.1:9393/100/add/200
+# http://127.0.0.1:9393/100/add/200
 
 # 4. BONUS: write a GET route that allows the user to search the database in some way
 get '/studentlocal/:campus' do
@@ -88,9 +88,18 @@ get '/studentlocal/:campus' do
   	end
   	student_list
 end
-# 
-# =======RELEASE 1: ADD RESEARCH==========
+# http://127.0.0.1:9393/studentlocal/CHI
 
+=begin
+# =======RELEASE 1: ADD RESEARCH==========
+1. Is Sinatra the only web app library in Ruby? What are some others?
+	* Ruby on Rails, Merb, Nitro, Camping
+2. Are SQLite and the sqlite3 gem your only options for using a database with Sinatra? What are some others?
+	* DMS: Mongo, PostgreSQL, mySQL, Oracle
+3. What is meant by the term web stack?
+	*"Web stack" refers to all of the different softwares (languages, OS, open source software, servers, 
+	  database software) that are "stacked" together to build a website.
+=end
 
 
 
