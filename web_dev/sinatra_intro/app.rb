@@ -52,6 +52,7 @@ get '/contact' do
 	address = params[:contact]
 	"Address: #{address}"
 end 
+# http://127.0.0.1:9393/contact?contact=351WHubbardSt,Chicago,IL60654
 
 # 2. write a GET route that takes a person's name as a query parameter 
 # and say, "Good job, [person's name]!"
@@ -64,9 +65,19 @@ get '/great_job' do
 		"Good job!"
 	end
 end
+# http://127.0.0.1:9393/great_job?name=SangMee
+# http://127.0.0.1:9393/great_job
 
 # 3. write a GET route that uses route parameters to add two numbers
 # and respond with the result
+get '/:number_1/:number_2' do
+	num1 = params[:number_1]
+	num2 = params[:number_2]
+	sum = num1.to_i + num2.to_i
+	"#{num1} + #{num2} = #{sum}"
+end
+# http://127.0.0.1:9393/100/200
+
 
 # 4. BONUS: write a GET route that allows the user to search 
 # the database in some way
