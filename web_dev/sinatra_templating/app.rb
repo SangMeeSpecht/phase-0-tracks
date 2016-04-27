@@ -17,6 +17,9 @@ get '/students/new' do
   erb :new_student
 end
 
+get '/students/graduation' do
+  erb :student_grad
+end
 # create new students via
 # a form
 post '/students' do
