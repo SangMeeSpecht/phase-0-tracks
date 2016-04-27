@@ -70,15 +70,31 @@ end
 
 # 3. write a GET route that uses route parameters to add two numbers
 # and respond with the result
-get '/:number_1/:number_2' do
+get 'add/:number_1/:number_2' do
 	num1 = params[:number_1]
 	num2 = params[:number_2]
 	sum = num1.to_i + num2.to_i
 	"#{num1} + #{num2} = #{sum}"
 end
-# http://127.0.0.1:9393/100/200
+# hhttp://127.0.0.1:9393/100/add/200
 
-
-# 4. BONUS: write a GET route that allows the user to search 
-# the database in some way
+# 4. BONUS: write a GET route that allows the user to search the database in some way
+get '/studentlocal/:campus' do
+	student = db.execute("SELECT * FROM students WHERE campus=?", [params[:campus]])
+	student_list = ""
+	student.each do |student|
+    	student_list << "Name: #{student['name']}<br>"
+    	student_list << "Campus: #{student['campus']}<br><br>"
+  	end
+  	student_list
+end
+# 
 # =======RELEASE 1: ADD RESEARCH==========
+
+
+
+
+
+
+
+
