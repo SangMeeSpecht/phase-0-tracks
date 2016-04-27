@@ -27,4 +27,9 @@ post '/students' do
   redirect '/'
 end
 
+post '/students/grad' do
+  db.execute("DELETE FROM students WHERE name=(?)", [params['name']])
+  redirect '/'
+end
+
 # add static resources
