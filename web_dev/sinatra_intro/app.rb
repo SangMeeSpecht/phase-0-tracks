@@ -4,7 +4,7 @@ require 'sqlite3'
 
 db = SQLite3::Database.new("students.db")
 db.results_as_hash = true
-=begin
+
 # write a basic GET route
 # add a query parameter
 # GET /
@@ -44,20 +44,25 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
-=end
+
 # =======RELEASE 0: ADD ROUTES============
 
 # 1. write a GET route that displays an address
 get '/contact' do
-	address = params[contact]
+	address = params[:contact]
 	"Address: #{address}"
 end 
 
 # 2. write a GET route that takes a person's name as a query parameter 
 # and say, "Good job, [person's name]!"
 # If query parameter is not present, say, "Good job!"
-get '/great_job'
-	
+get '/great_job' do
+	name = params[:name]
+	if name
+		"Good job, #{name}!"
+	else
+		"Good job!"
+	end
 end
 
 # 3. write a GET route that uses route parameters to add two numbers
