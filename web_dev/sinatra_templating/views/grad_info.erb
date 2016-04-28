@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Graduation Information</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <h1>Graduation Information</h1>
@@ -13,6 +13,12 @@
     Quisque at aliquam enim. Morbi libero ante, elementum non vestibulum ac, imperdiet sed mi. Suspendisse id mattis felis, ac luctus diam. Duis sit amet imperdiet turpis. Praesent tortor metus, vehicula vel ligula vitae, tincidunt fringilla erat. Donec convallis interdum quam. Aliquam id massa sapien. Integer in sem pellentesque, iaculis mauris vitae, vehicula neque. Cras nulla libero, porttitor quis leo sit amet, lacinia rhoncus est. Ut malesuada egestas sem, ac mattis purus posuere eget. Maecenas ac eros eu elit posuere imperdiet. Phasellus fringilla urna nulla, ac pharetra ante mattis vel. Sed a lectus quis orci vestibulum suscipit.
   </p>
   <p>Click <a href="/students/graduation">here</a> to start your graduation form.</p>
+  <h2>Congratulations to the following Graduates:</h2>
+    <ul>
+    <% @students.each do |student| %>
+      <li><%= student['name'] %>, <%= student['campus'] %>, <%= student['graddate'] %></li>
+    <% end %>
+  </ul>
 </body>
 </html>
 
