@@ -31,7 +31,6 @@ post '/students' do
   db.execute("INSERT INTO students (name, campus, age) VALUES (?,?,?)", [params['name'], params['campus'], params['age'].to_i])
   redirect '/'
 end
-
 post '/students/grad' do
 	db.execute("DELETE FROM students WHERE name=(?)", [params['name']])
   redirect '/'
