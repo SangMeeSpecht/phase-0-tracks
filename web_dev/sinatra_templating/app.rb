@@ -17,9 +17,14 @@ get '/students/new' do
   erb :new_student
 end
 
+get '/students/graduationinfo' do
+  erb :grad_info
+end
+
 get '/students/graduation' do
   erb :student_grad
 end
+
 # create new students via
 # a form
 post '/students' do
@@ -28,7 +33,7 @@ post '/students' do
 end
 
 post '/students/grad' do
-  db.execute("DELETE FROM students WHERE name=(?)", [params['name']])
+	db.execute("DELETE FROM students WHERE name=(?)", [params['name']])
   redirect '/'
 end
 
