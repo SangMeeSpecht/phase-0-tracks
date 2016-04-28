@@ -2,26 +2,32 @@
 <html>
 <head>
   <title>Graduation Form</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <h1>Graduation Form</h1>
+  <p>Please fill out the form below to apply for Graduation</p>
   <form action="/students/grad" method="POST">
-  	<div>
-  		<label>First & Last Name</label>
-    	<input type="text" name="name">
-  	</div>
-    <div>
-      <label>Campus</label>
-      <input type="text" name="campus">
-    </div>
-    <div>
-      <label>Age</label>
-      <input type="text" name="age">
-    </div>
-    <div>
-      <label>Graduation Date</label>
-      <input type="text" name="graddate"></input>
-    </div>
-    <button type="submit">Save</button>
+    <table>
+  	<tr>
+  		<td class="right"><label>First & Last Name</label></td>
+    	<td><input type="text" name="name"></td>
+  	</tr>
+    <tr>
+      <td class="right"><label>Campus</label></td>
+      <td><input type="text" name="campus"></td>
+    </tr>
+    <tr>
+      <td class="right"><label>Age</label></td>
+      <td><input type="text" name="age"></td>
+    </tr>
+    <tr>
+      <td class="right"><label>Graduation Date</label></td>
+      <td><input type="text" name="graddate" placeholder="month/year"></input></td>
+    </tr>
+    </table>
+    <button type="submit">Submit</button>
   </form>
 </body>
 </html>
+
