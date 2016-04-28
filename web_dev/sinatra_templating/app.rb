@@ -18,6 +18,7 @@ get '/students/new' do
 end
 
 get '/students/graduationinfo' do
+	@students = db.execute("SELECT * FROM graduates")
   erb :grad_info
 end
 
@@ -31,9 +32,10 @@ post '/students' do
   db.execute("INSERT INTO students (name, campus, age) VALUES (?,?,?)", [params['name'], params['campus'], params['age'].to_i])
   redirect '/'
 end
+
 post '/students/grad' do
-	db.execute("DELETE FROM students WHERE name=(?)", [params['name']])
-  redirect '/'
+	db.execute("INSERT INTO graduates (name, campus, graddate) VALUES (?,?,?)", [params['name'], params['campus'], params['graddate'].to_i])
+  redirect '/students/graduationinfo'
 end
 
 # add static resources
